@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,76 @@
     <link rel="stylesheet" href="style.css">
     <title>Todo List | The Odin Project</title>
 </head>
+
 <body>
-    
+    <header class='border-style'>
+        <div class="header-left">
+            <img src="./assets/images/presidencia de la nacion.png" alt="">
+            <h2 id="logo-text">Presidencia de la Nacion</h2>
+        </div>
+        <div class="header-center">
+            <h1>Productivid<strong>.AR</strong></h1>
+        </div>
+        <div class="header-right">
+            <p>Hola! username</p>
+            <div class="user-circle"></div>
+        </div>
+    </header>
+    <div class="todo-wrapper">
+        <div class="container">
+            <div class="sidebar">
+                <div class="sidebar-content">
+                    <div class="home">
+                        <button class="home-btn" class="sidebar-buttons">Home</button>
+                    </div>
+                    <div class="today">
+                        <button class="today-btn" class="sidebar-buttons">Today</button>
+                    </div>
+                    <div class="week">
+                        <button class="week-btn" class="sidebar-buttons">Week</button>
+                    </div>
+                    <div class="projects">
+                        <button class="projects-btn" class="sidebar-buttons">Projects</button>
+                    </div>
+                    <div class="notes">
+                        <button class="notes-btn" class="sidebar-buttons">Notes</button>
+                    </div>
+                    <div class="sidebar-bottom">
+                        <button class="add-circle">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="todo-right">
+                <!--Cards-->
+                <div class="card-wrapper">
+                    <div class="left-card">
+                        <button class="check-card-btn"></button>
+                        <p class="task-name">Test Task</p>
+                    </div>
+                    <div class="right-card">
+                        <button class="card-detail-btn">DETAILS</button>
+                        <button class="card-date-btn">Dec 2nd</button>
+                        <button class="card-edit-btn">Edit</button>
+                        <button class="card-delete-btn">X</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer">
+        <div class="left-footer">
+            <p>Safety Protocols</p>
+            <p>Terms of Use</p>
+            <p>Privacy Policy</p>
+        </div>
+        <div class="right-footer">
+            <p>Copyright | @agusjoffre | 2023</p>
+            <p>Design by Guido Ferrero</p>
+        </div>
+
+    </div>
+
 </body>
+
 </html>
