@@ -244,7 +244,7 @@ header strong {
 }
 
 .right-footer {
-    margin-right: 190px;
-    display: flex;
-    gap: 60px;
+  margin-right: 190px;
+  display: flex;
+  gap: 60px;
 }
