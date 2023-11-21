@@ -65,7 +65,7 @@ const createInfoModule = (() => {
   };
 })();
 
-// add Info module fn
+/*  // add Info module fn
 
 const addInfoModule = (() => {
   // NO PUEDO PONER _DETAILS COMO PARAMETRO PQ EN REALIDAD SON TODO Y NOTE.
@@ -105,6 +105,7 @@ createInfoModule.createProject(
   createInfoModule.projectDetails
 );
 
+//-----------------------------testing2-------------------------------------------------//
 let project2 = addInfoModule.addProject("Project 2");
 let todo2 = addInfoModule.addToDo(
   "Todo 2",
@@ -118,3 +119,4 @@ console.log(createInfoModule.projects);
 console.log(createInfoModule.toDos);
 console.log(createInfoModule.notes);
 //-------------------------------------------------------------------------------//
+*/
