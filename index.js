@@ -26,7 +26,7 @@ class Note {
 
 // create info module
 
-const createInfoModule = (() => {
+const infoModule = (() => {
   // Projects array
   const projects = [];
   // Project details array
@@ -52,6 +52,16 @@ const createInfoModule = (() => {
     const newNote = new Note(title, details);
     notes.push(newNote);
     projectDetails.push(newNote);
+  };
+
+  const deleteProject = (i) => {
+    projects.splice(i);
+  };
+  const deleteToDo = (i) => {
+    toDos.splice(i);
+  };
+  const deleteNote = (i) => {
+    notes.splice(i);
   };
 
   return {
@@ -87,21 +97,18 @@ const addTodoInfoModule = (() => {
       return;
     }
 
-    createInfoModule.createToDo(
+    infoModule.createToDo(
       toDoTitleInput,
       toDoDescriptionInput,
       toDoDueDateInput,
       toDoNotesInput,
       checklist
     );
-    createInfoModule.createNote(noteTitleInput, noteDetailsInput);
-    createInfoModule.createProject(
-      projectTitleInput,
-      createInfoModule.projectDetails
-    );
-    console.log(createInfoModule.projects);
-    console.log(createInfoModule.toDos);
-    console.log(createInfoModule.notes);
+    infoModule.createNote(noteTitleInput, noteDetailsInput);
+    infoModule.createProject(projectTitleInput, infoModule.projectDetails);
+    console.log(infoModule.projects);
+    console.log(infoModule.toDos);
+    console.log(infoModule.notes);
   });
 })();
 
