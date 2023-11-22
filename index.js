@@ -48,8 +48,8 @@ const createInfoModule = (() => {
   // Notes array
   const notes = [];
   // Notes creation fn
-  const createNote = (title, _details) => {
-    const newNote = new Note(title, _details);
+  const createNote = (title, details) => {
+    const newNote = new Note(title, details);
     notes.push(newNote);
     projectDetails.push(newNote);
   };
@@ -65,32 +65,47 @@ const createInfoModule = (() => {
   };
 })();
 
-/*  // add Info module fn
+const addTodoInfoModule = (() => {
+  const addSidebarButton = document.querySelector("#add-side-btn");
+  addSidebarButton.addEventListener("click", () => {
+    const projectTitleInput = prompt("Project Title...");
+    const toDoTitleInput = prompt("To do title...");
+    const toDoDescriptionInput = prompt("To do Description...");
+    const toDoDueDateInput = prompt("To do due date...");
+    const toDoNotesInput = prompt("To do notes...");
+    const toDoChecklistInput = prompt("To do checklist... True or false");
+    const noteTitleInput = prompt("Note title...");
+    const noteDetailsInput = prompt("Note details...");
+    let checklist;
+    if (toDoChecklistInput === "true") {
+      checklist = true;
+    } else if (toDoChecklistInput === "false") {
+      checklist = false;
+    }
+    if (toDoChecklistInput !== "true" && toDoChecklistInput !== "false") {
+      alert("Checklist has to be true or false");
+      return;
+    }
 
-const addInfoModule = (() => {
-  // NO PUEDO PONER _DETAILS COMO PARAMETRO PQ EN REALIDAD SON TODO Y NOTE.
-  const addProject = (_title) => {
-    createInfoModule.createProject(_title);
-  };
-  const addToDo = (_title, _description, _dueDate, _notes, _checklist) => {
-    if (_title && _description && _dueDate && _notes && _checklist) {
-      createInfoModule.createToDo(
-        _title,
-        _description,
-        _dueDate,
-        _notes,
-        _checklist
-      );
-    }
-  };
-  const addNote = (_title, _details) => {
-    if (_title) {
-      createInfoModule.createNote(_title, _details);
-    }
-  };
-  return { addProject, addToDo, addNote };
+    createInfoModule.createToDo(
+      toDoTitleInput,
+      toDoDescriptionInput,
+      toDoDueDateInput,
+      toDoNotesInput,
+      checklist
+    );
+    createInfoModule.createNote(noteTitleInput, noteDetailsInput);
+    createInfoModule.createProject(
+      projectTitleInput,
+      createInfoModule.projectDetails
+    );
+    console.log(createInfoModule.projects);
+    console.log(createInfoModule.toDos);
+    console.log(createInfoModule.notes);
+  });
 })();
 
+/*
 //----------------------------testing--------------------------------------------//
 let note1 = createInfoModule.createNote("Test Note", "Test Note Details...");
 let todo1 = createInfoModule.createToDo(

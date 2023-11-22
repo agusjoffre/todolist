@@ -242,3 +242,7 @@ header strong {
   display: flex;
   gap: 60px;
 }
+
+.addContainer {
+  background-color: var(--light-dark);
+}
