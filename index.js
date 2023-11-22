@@ -78,6 +78,7 @@ const infoModule = (() => {
 const addTodoInfoModule = (() => {
   const addSidebarButton = document.querySelector("#add-side-btn");
   addSidebarButton.addEventListener("click", () => {
+    const chooseProjectInput = prompt("Choose project... index number");
     const projectTitleInput = prompt("Project Title...");
     const toDoTitleInput = prompt("To do title...");
     const toDoDescriptionInput = prompt("To do Description...");
@@ -104,11 +105,10 @@ const addTodoInfoModule = (() => {
       toDoNotesInput,
       checklist
     );
+
     infoModule.createNote(noteTitleInput, noteDetailsInput);
     infoModule.createProject(projectTitleInput, infoModule.projectDetails);
     console.log(infoModule.projects);
-    console.log(infoModule.toDos);
-    console.log(infoModule.notes);
   });
 })();
 
