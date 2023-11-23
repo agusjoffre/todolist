@@ -78,7 +78,6 @@ const infoModule = (() => {
 const addTodoInfoModule = (() => {
   const addSidebarButton = document.querySelector("#add-side-btn");
   addSidebarButton.addEventListener("click", () => {
-    const chooseProjectInput = prompt("Choose project... index number");
     const projectTitleInput = prompt("Project Title...");
     const toDoTitleInput = prompt("To do title...");
     const toDoDescriptionInput = prompt("To do Description...");
@@ -111,6 +110,130 @@ const addTodoInfoModule = (() => {
     console.log(infoModule.projects);
   });
 })();
+
+const userInterfaceModule = (() => {
+  /* DOM SELECTORS */
+  const toDoRightContainer = document.querySelector(".todo-right");
+  //----------------------------------------------------------------------------//
+  let realContainer;
+  let switchingContainer;
+  const createUserInfoInputInterface = () => {
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("info-input-wrapper");
+    toDoRightContainer.appendChild(wrapper);
+    const containerOfContainers = document.createElement("div");
+    containerOfContainers.classList.add("info-input-container");
+    wrapper.appendChild(containerOfContainers);
+    const containerTitle = document.createElement("p");
+    containerTitle.classList.add("info-input-container-title");
+    containerOfContainers.appendChild(containerTitle);
+    realContainer = document.createElement("div");
+    realContainer.classList.add("info-input-container-container");
+    containerOfContainers.appendChild(realContainer);
+    const top = document.createElement("div");
+    top.classList.add("info-input-top");
+    realContainer.appendChild(top);
+    const topToDo = document.createElement("button");
+    topToDo.classList.add("info-input-top-todo-btn");
+    top.appendChild(topToDo);
+    const topProject = document.createElement("button");
+    topProject.classList.add("info-input-top-project-btn");
+    top.appendChild(topProject);
+    const topNotes = document.createElement("button");
+    topNotes.classList.add("info-input-top-notes-btn");
+    top.appendChild(topNotes);
+  };
+
+  let toDoTitleInput;
+  let toDoDescriptionInput;
+  let toDoDueDateInput;
+  let toDoAdd;
+  const createToDoInputInterface = () => {
+    switchingContainer = document.createElement("div");
+    switchingContainer.classList.add("switching-container");
+    realContainer.appendChild(switchingContainer);
+    toDoTitleInput = document.createElement("input");
+    toDoTitleInput.classList.add("todo-title-input");
+    switchingContainer.appendChild(toDoTitleInput);
+    toDoDescriptionInput = document.createElement("textarea");
+    toDoDescriptionInput.classList.add("todo-description-input");
+    switchingContainer.appendChild(toDoDescriptionInput);
+    const toDoBottom = document.createElement("div");
+    toDoBottom.classList.add("todo-bottom");
+    switchingContainer.appendChild(toDoBottom);
+    const toDoDueDateTitle = document.createElement("p");
+    toDoDueDateTitle.classList.add("todo-duedate-title");
+    toDoDueDateTitle.innerText = "Due date: ";
+    toDoBottom.appendChild(toDoDueDateTitle);
+    toDoDueDateInput = document.createElement("input");
+    toDoDueDateInput.type = "date";
+    toDoDueDateInput.classList.add("todo-duedate-input");
+    toDoBottom.appendChild(toDoDueDateInput);
+    toDoAdd = document.createElement("button");
+    toDoAdd.classList.add("todo-add-button");
+    toDoAdd.innerText = "Add";
+    toDoBottom.appendChild(toDoAdd);
+  };
+
+  let projectTitleInput;
+  let addProject;
+  const createProjectInputInterface = () => {
+    switchingContainer = document.createElement("div");
+    switchingContainer.classList.add("switching-container");
+    realContainer.appendChild(switchingContainer);
+    projectTitleInput = document.createElement("input");
+    projectTitleInput.classList.add("project-title-input");
+    switchingContainer.appendChild(projectTitleInput);
+    addProject = document.createElement("button");
+    addProject.classList.add("project-add-btn");
+    addProject.innerText = "Add";
+    switchingContainer.appendChild(addProject);
+  };
+
+  let noteTitleInput;
+  let noteDetailsInput;
+  let addNote;
+  const createNotesInputInterface = () => {
+    switchingContainer = document.createElement("div");
+    switchingContainer.classList.add("switching-container");
+    realContainer.appendChild(switchingContainer);
+    noteTitleInput = document.createElement("input");
+    noteTitleInput.classList.add("notes-title-input");
+    switchingContainer.appendChild(noteTitleInput);
+    noteDetailsInput = document.createElement("textarea");
+    noteDetailsInput.classList.add("notes-details-input");
+    switchingContainer.appendChild(noteDetailsInput);
+    addNote = document.createElement("button");
+    addNote.classList.add("notes-add-btn");
+    addNote.innerText = "Add";
+    switchingContainer.appendChild(addNote);
+  };
+
+  const displayMainInterface = () => {
+    toDoRightContainer.removeChildren();
+    createUserInfoInputInterface();
+  };
+  const displayToDoInterface = () => {
+    switchingContainer.removeChildren();
+    createToDoInputInterface();
+  };
+  const displayProjectInterface = () => {
+    switchingContainer.removeChildren();
+    createProjectInputInterface();
+  };
+  const displayNotesInterface = () => {
+    switchingContainer.removeChildren();
+    createNotesInputInterface();
+  };
+  return {
+    displayMainInterface,
+    displayToDoInterface,
+    displayProjectInterface,
+    displayNotesInterface,
+  };
+})();
+
+const listenersModule = (() => {})();
 
 /*
 //----------------------------testing--------------------------------------------//
