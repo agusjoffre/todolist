@@ -232,7 +232,6 @@ const userInterfaceModule = (() => {
       toDoRightContainer.removeChild(toDoRightContainer.firstChild);
     }
     createUserInfoInputInterface();
-    createNotesInputInterface();
   };
   const displayToDoInterface = () => {
     while (switchingContainer.firstChild) {
