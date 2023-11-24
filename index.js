@@ -75,41 +75,41 @@ const infoModule = (() => {
   };
 })();
 
-const addTodoInfoModule = (() => {
-  const addSidebarButton = document.querySelector("#add-side-btn");
-  addSidebarButton.addEventListener("click", () => {
-    const projectTitleInput = prompt("Project Title...");
-    const toDoTitleInput = prompt("To do title...");
-    const toDoDescriptionInput = prompt("To do Description...");
-    const toDoDueDateInput = prompt("To do due date...");
-    const toDoNotesInput = prompt("To do notes...");
-    const toDoChecklistInput = prompt("To do checklist... True or false");
-    const noteTitleInput = prompt("Note title...");
-    const noteDetailsInput = prompt("Note details...");
-    let checklist;
-    if (toDoChecklistInput === "true") {
-      checklist = true;
-    } else if (toDoChecklistInput === "false") {
-      checklist = false;
-    }
-    if (toDoChecklistInput !== "true" && toDoChecklistInput !== "false") {
-      alert("Checklist has to be true or false");
-      return;
-    }
+// const addTodoInfoModule = (() => {
+//   const addSidebarButton = document.querySelector("#add-side-btn");
+//   addSidebarButton.addEventListener("click", () => {
+//     const projectTitleInput = prompt("Project Title...");
+//     const toDoTitleInput = prompt("To do title...");
+//     const toDoDescriptionInput = prompt("To do Description...");
+//     const toDoDueDateInput = prompt("To do due date...");
+//     const toDoNotesInput = prompt("To do notes...");
+//     const toDoChecklistInput = prompt("To do checklist... True or false");
+//     const noteTitleInput = prompt("Note title...");
+//     const noteDetailsInput = prompt("Note details...");
+//     let checklist;
+//     if (toDoChecklistInput === "true") {
+//       checklist = true;
+//     } else if (toDoChecklistInput === "false") {
+//       checklist = false;
+//     }
+//     if (toDoChecklistInput !== "true" && toDoChecklistInput !== "false") {
+//       alert("Checklist has to be true or false");
+//       return;
+//     }
 
-    infoModule.createToDo(
-      toDoTitleInput,
-      toDoDescriptionInput,
-      toDoDueDateInput,
-      toDoNotesInput,
-      checklist
-    );
+//     infoModule.createToDo(
+//       toDoTitleInput,
+//       toDoDescriptionInput,
+//       toDoDueDateInput,
+//       toDoNotesInput,
+//       checklist
+//     );
 
-    infoModule.createNote(noteTitleInput, noteDetailsInput);
-    infoModule.createProject(projectTitleInput, infoModule.projectDetails);
-    console.log(infoModule.projects);
-  });
-})();
+//     infoModule.createNote(noteTitleInput, noteDetailsInput);
+//     infoModule.createProject(projectTitleInput, infoModule.projectDetails);
+//     console.log(infoModule.projects);
+//   });
+// })();
 
 const userInterfaceModule = (() => {
   /* DOM SELECTORS */
@@ -210,19 +210,27 @@ const userInterfaceModule = (() => {
   };
 
   const displayMainInterface = () => {
-    toDoRightContainer.removeChildren();
+    while (toDoRightContainer.firstChild) {
+      toDoRightContainer.removeChild(toDoRightContainer.firstChild);
+    }
     createUserInfoInputInterface();
   };
   const displayToDoInterface = () => {
-    switchingContainer.removeChildren();
+    while (switchingContainer.firstChild) {
+      switchingContainer.removeChild(switchingContainer.firstChild);
+    }
     createToDoInputInterface();
   };
   const displayProjectInterface = () => {
-    switchingContainer.removeChildren();
+    while (switchingContainer.firstChild) {
+      switchingContainer.removeChild(switchingContainer.firstChild);
+    }
     createProjectInputInterface();
   };
   const displayNotesInterface = () => {
-    switchingContainer.removeChildren();
+    while (switchingContainer.firstChild) {
+      switchingContainer.removeChild(switchingContainer.firstChild);
+    }
     createNotesInputInterface();
   };
   return {
@@ -233,7 +241,12 @@ const userInterfaceModule = (() => {
   };
 })();
 
-const listenersModule = (() => {})();
+const listenersModule = (() => {
+  const addCircleButton = document.querySelector("#add-side-btn");
+  addCircleButton.addEventListener("click", () => {
+    userInterfaceModule.displayMainInterface();
+  });
+})();
 
 /*
 //----------------------------testing--------------------------------------------//
