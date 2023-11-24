@@ -54,15 +54,15 @@ const infoModule = (() => {
     projectDetails.push(newNote);
   };
 
-  // const deleteProject = (i) => {
-  //   projects.splice(i);
-  // };
-  // const deleteToDo = (i) => {
-  //   toDos.splice(i);
-  // };
-  // const deleteNote = (i) => {
-  //   notes.splice(i);
-  // };
+  const deleteProject = (i) => {
+    projects.splice(i, 1);
+  };
+  const deleteToDo = (i) => {
+    toDos.splice(i, 1);
+  };
+  const deleteNote = (i) => {
+    notes.splice(i, 1);
+  };
 
   return {
     projectDetails,
@@ -101,138 +101,181 @@ const addInfoModule = (() => {
 const userInterfaceModule = (() => {
   const toDoRightContainer = document.querySelector(".todo-right");
 
+  /*Despues chequear que --let-- son inutiles.*/
+
   let realContainer;
   let switchingContainer;
   let topToDo;
   let topProject;
   let topNotes;
-
-  const createUserInfoInputInterface = () => {
-    const wrapper = document.createElement("div");
-    wrapper.classList.add("info-input-wrapper");
-    toDoRightContainer.appendChild(wrapper);
-    const containerOfContainers = document.createElement("div");
-    containerOfContainers.classList.add("info-input-container");
-    wrapper.appendChild(containerOfContainers);
-    const containerTitle = document.createElement("p");
-    containerTitle.innerText = "Create a new...";
-    containerTitle.classList.add("info-input-container-title");
-    containerOfContainers.appendChild(containerTitle);
-    realContainer = document.createElement("div");
-    realContainer.classList.add("info-input-container-container");
-    containerOfContainers.appendChild(realContainer);
-    const top = document.createElement("div");
-    top.classList.add("info-input-top");
-    realContainer.appendChild(top);
-    ///
-    topToDo = document.createElement("button");
-    topToDo.innerText = "To Do";
-    topToDo.classList.add("info-input-top-btn");
-    topToDo.classList.add("info-input-top-todo-btn");
-    top.appendChild(topToDo);
-    //
-    topProject = document.createElement("button");
-    topProject.innerText = "Project";
-    topProject.classList.add("info-input-top-btn");
-    topProject.classList.add("info-input-top-project-btn");
-    top.appendChild(topProject);
-    ///
-    topNotes = document.createElement("button");
-    topNotes.innerText = "Notes";
-    topNotes.classList.add("info-input-top-btn");
-    topNotes.classList.add("info-input-top-notes-btn");
-    top.appendChild(topNotes);
-  };
-
   let toDoForm;
-  const createToDoInputInterface = () => {
-    switchingContainer = document.createElement("div");
-    switchingContainer.classList.add("switching-container");
-    realContainer.appendChild(switchingContainer);
-    //
-    toDoForm = document.createElement("form");
-    switchingContainer.appendChild(toDoForm);
-    //
-    const toDoTitleInput = document.createElement("input");
-    toDoTitleInput.placeholder = "Title...";
-    toDoTitleInput.classList.add("todo-title-input");
-    toDoTitleInput.name = "title";
-    toDoForm.appendChild(toDoTitleInput);
-    const toDoDescriptionInput = document.createElement("textarea");
-    toDoDescriptionInput.placeholder = "Complete details...";
-    toDoDescriptionInput.classList.add("todo-description-input");
-    toDoDescriptionInput.name = "description";
-    toDoForm.appendChild(toDoDescriptionInput);
-    const toDoBottom = document.createElement("div");
-    toDoBottom.classList.add("todo-bottom");
-    toDoForm.appendChild(toDoBottom);
-    const toDoBottomLeft = document.createElement("div");
-    toDoBottomLeft.classList.add("todo-bottom-left");
-    toDoBottom.appendChild(toDoBottomLeft);
-    const toDoDueDateTitle = document.createElement("p");
-    toDoDueDateTitle.classList.add("todo-duedate-title");
-    toDoDueDateTitle.innerText = "Due date: ";
-    toDoBottomLeft.appendChild(toDoDueDateTitle);
-    const toDoDueDateInput = document.createElement("input");
-    toDoDueDateInput.name = "dueDate";
-    toDoDueDateInput.type = "date";
-    toDoDueDateInput.classList.add("todo-duedate-input");
-    toDoBottomLeft.appendChild(toDoDueDateInput);
-    const toDoBottomRight = document.createElement("div");
-    toDoBottomRight.classList.add("todo-bottom-right");
-    toDoBottom.appendChild(toDoBottomRight);
-    const toDoAdd = document.createElement("button");
-    toDoAdd.type = "submit";
-    toDoAdd.classList.add("todo-add-button");
-    toDoAdd.innerText = "Add";
-    toDoBottomRight.appendChild(toDoAdd);
-  };
-
   let projectTitleInput;
   let addProject;
   let projectForm;
-  const createProjectInputInterface = () => {
-    switchingContainer = document.createElement("div");
-    switchingContainer.classList.add("switching-container");
-    realContainer.appendChild(switchingContainer);
-    projectForm = document.createElement("form");
-    switchingContainer.appendChild(projectForm);
-    projectTitleInput = document.createElement("input");
-    projectTitleInput.name = "title";
-    projectTitleInput.classList.add("project-title-input");
-    projectTitleInput.placeholder = "Project title...";
-    projectForm.appendChild(projectTitleInput);
-    addProject = document.createElement("button");
-    addProject.type = "submit";
-    addProject.classList.add("project-add-btn");
-    addProject.innerText = "Add";
-    projectForm.appendChild(addProject);
-  };
-
   let noteTitleInput;
   let noteDetailsInput;
   let addNote;
   let notesForm;
-  const createNotesInputInterface = () => {
+
+  const createUserInfoInputInterface = () => {
+    // create elements
+    const wrapper = document.createElement("div");
+    const containerOfContainers = document.createElement("div");
+    const containerTitle = document.createElement("p");
+    realContainer = document.createElement("div");
+    const top = document.createElement("div");
+    topToDo = document.createElement("button");
+    topProject = document.createElement("button");
+    topNotes = document.createElement("button");
+
+    // adding classes
+    wrapper.classList.add("info-input-wrapper");
+    containerOfContainers.classList.add("info-input-container");
+    containerTitle.classList.add("info-input-container-title");
+    realContainer.classList.add("info-input-container-container");
+    top.classList.add("info-input-top");
+    topToDo.classList.add("info-input-top-btn");
+    topToDo.classList.add("info-input-top-todo-btn");
+    topProject.classList.add("info-input-top-btn");
+    topProject.classList.add("info-input-top-project-btn");
+    topNotes.classList.add("info-input-top-btn");
+    topNotes.classList.add("info-input-top-notes-btn");
+
+    // inner texts
+    containerTitle.innerText = "Create a new...";
+    topToDo.innerText = "To Do";
+    topProject.innerText = "Project";
+    topNotes.innerText = "Notes";
+
+    // appending
+    toDoRightContainer.appendChild(wrapper);
+    wrapper.appendChild(containerOfContainers);
+    containerOfContainers.appendChild(containerTitle);
+    containerOfContainers.appendChild(realContainer);
+    realContainer.appendChild(top);
+    top.appendChild(topToDo);
+    top.appendChild(topProject);
+    top.appendChild(topNotes);
+  };
+
+  const createToDoInputInterface = () => {
+    // create elements
     switchingContainer = document.createElement("div");
+    toDoForm = document.createElement("form");
+    const toDoTitleInput = document.createElement("input");
+    const toDoDescriptionInput = document.createElement("textarea");
+    const toDoBottom = document.createElement("div");
+    const toDoBottomLeft = document.createElement("div");
+    const toDoDueDateTitle = document.createElement("p");
+    const toDoDueDateInput = document.createElement("input");
+    const toDoBottomRight = document.createElement("div");
+    const toDoAdd = document.createElement("button");
+
+    //adding classes
     switchingContainer.classList.add("switching-container");
+    toDoTitleInput.classList.add("todo-title-input");
+    toDoDescriptionInput.classList.add("todo-description-input");
+    toDoBottom.classList.add("todo-bottom");
+    toDoBottomLeft.classList.add("todo-bottom-left");
+    toDoDueDateTitle.classList.add("todo-duedate-title");
+    toDoDueDateInput.classList.add("todo-duedate-input");
+    toDoBottomRight.classList.add("todo-bottom-right");
+    toDoAdd.classList.add("todo-add-button");
+
+    // placeholders
+    toDoTitleInput.placeholder = "Title...";
+    toDoDescriptionInput.placeholder = "Complete details...";
+
+    // input names
+    toDoTitleInput.name = "title";
+    toDoDescriptionInput.name = "description";
+    toDoDueDateInput.name = "dueDate";
+
+    // input types
+    toDoDueDateInput.type = "date";
+    toDoAdd.type = "submit";
+
+    // inner text
+    toDoDueDateTitle.innerText = "Due date: ";
+    toDoAdd.innerText = "Add";
+
+    // appending
     realContainer.appendChild(switchingContainer);
+    switchingContainer.appendChild(toDoForm);
+    toDoForm.appendChild(toDoTitleInput);
+    toDoForm.appendChild(toDoDescriptionInput);
+    toDoForm.appendChild(toDoBottom);
+    toDoBottom.appendChild(toDoBottomLeft);
+    toDoBottomLeft.appendChild(toDoDueDateTitle);
+    toDoBottomLeft.appendChild(toDoDueDateInput);
+    toDoBottom.appendChild(toDoBottomRight);
+    toDoBottomRight.appendChild(toDoAdd);
+  };
+
+  const createProjectInputInterface = () => {
+    // create elements
+    switchingContainer = document.createElement("div");
+    projectForm = document.createElement("form");
+    projectTitleInput = document.createElement("input");
+    addProject = document.createElement("button");
+
+    // adding classes
+    switchingContainer.classList.add("switching-container");
+    projectTitleInput.classList.add("project-title-input");
+    addProject.classList.add("project-add-btn");
+
+    // input names
+    projectTitleInput.name = "title";
+
+    // input types
+    addProject.type = "submit";
+
+    // input placeholders
+    projectTitleInput.placeholder = "Project title...";
+
+    // inner text
+    addProject.innerText = "Add";
+
+    // appending
+    realContainer.appendChild(switchingContainer);
+    switchingContainer.appendChild(projectForm);
+    projectForm.appendChild(projectTitleInput);
+    projectForm.appendChild(addProject);
+  };
+
+  const createNotesInputInterface = () => {
+    // create elements
+    switchingContainer = document.createElement("div");
     notesForm = document.createElement("form");
-    switchingContainer.appendChild(notesForm);
     noteTitleInput = document.createElement("input");
-    noteTitleInput.name = "title";
-    noteTitleInput.classList.add("notes-title-input");
-    noteTitleInput.placeholder = "Note title...";
-    notesForm.appendChild(noteTitleInput);
     noteDetailsInput = document.createElement("textarea");
-    noteDetailsInput.classList.add("notes-details-input");
-    noteDetailsInput.name = "details";
-    noteDetailsInput.placeholder = "Complete details...";
-    notesForm.appendChild(noteDetailsInput);
     addNote = document.createElement("button");
-    addNote.type = "submit";
+
+    // adding classes
+    switchingContainer.classList.add("switching-container");
+    noteTitleInput.classList.add("notes-title-input");
+    noteDetailsInput.classList.add("notes-details-input");
     addNote.classList.add("notes-add-btn");
+
+    // input names
+    noteTitleInput.name = "title";
+    noteDetailsInput.name = "details";
+
+    // input placeholders
+    noteTitleInput.placeholder = "Note title...";
+    noteDetailsInput.placeholder = "Complete details...";
+
+    // input types
+    addNote.type = "submit";
+
+    // inner text
     addNote.innerText = "Add";
+
+    // appending
+    realContainer.appendChild(switchingContainer);
+    switchingContainer.appendChild(notesForm);
+    notesForm.appendChild(noteTitleInput);
+    notesForm.appendChild(noteDetailsInput);
     notesForm.appendChild(addNote);
   };
 
@@ -329,6 +372,10 @@ const listenersModule = (() => {
       userInterfaceModule.displayToDoInterface();
       userInterfaceModule.assignEventListeners();
     });
+  };
+  const openHomeInterface = () => {
+    const homeButton = document.querySelector(".home-btn");
+    homeButton.addEventListener("click", () => {});
   };
   openInterfaceListener();
 })();
