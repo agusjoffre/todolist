@@ -97,40 +97,6 @@ const addInfoModule = (() => {
     sendNotesInfo,
   };
 })();
-//   const addSidebarButton = document.querySelector("#add-side-btn");
-//   addSidebarButton.addEventListener("click", () => {
-//     const projectTitleInput = prompt("Project Title...");
-//     const toDoTitleInput = prompt("To do title...");
-//     const toDoDescriptionInput = prompt("To do Description...");
-//     const toDoDueDateInput = prompt("To do due date...");
-//     const toDoNotesInput = prompt("To do notes...");
-//     const toDoChecklistInput = prompt("To do checklist... True or false");
-//     const noteTitleInput = prompt("Note title...");
-//     const noteDetailsInput = prompt("Note details...");
-//     let checklist;
-//     if (toDoChecklistInput === "true") {
-//       checklist = true;
-//     } else if (toDoChecklistInput === "false") {
-//       checklist = false;
-//     }
-//     if (toDoChecklistInput !== "true" && toDoChecklistInput !== "false") {
-//       alert("Checklist has to be true or false");
-//       return;
-//     }
-
-//     infoModule.createToDo(
-//       toDoTitleInput,
-//       toDoDescriptionInput,
-//       toDoDueDateInput,
-//       toDoNotesInput,
-//       checklist
-//     );
-
-//     infoModule.createNote(noteTitleInput, noteDetailsInput);
-//     infoModule.createProject(projectTitleInput, infoModule.projectDetails);
-//     console.log(infoModule.projects);
-//   });
-// })();
 
 const userInterfaceModule = (() => {
   const toDoRightContainer = document.querySelector(".todo-right");
