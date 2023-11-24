@@ -112,11 +112,14 @@ const infoModule = (() => {
 // })();
 
 const userInterfaceModule = (() => {
-  /* DOM SELECTORS */
   const toDoRightContainer = document.querySelector(".todo-right");
-  //----------------------------------------------------------------------------//
+
   let realContainer;
   let switchingContainer;
+  let topToDo;
+  let topProject;
+  let topNotes;
+
   const createUserInfoInputInterface = () => {
     const wrapper = document.createElement("div");
     wrapper.classList.add("info-input-wrapper");
@@ -134,17 +137,20 @@ const userInterfaceModule = (() => {
     const top = document.createElement("div");
     top.classList.add("info-input-top");
     realContainer.appendChild(top);
-    const topToDo = document.createElement("button");
+    ///
+    topToDo = document.createElement("button");
     topToDo.innerText = "To Do";
     topToDo.classList.add("info-input-top-btn");
     topToDo.classList.add("info-input-top-todo-btn");
     top.appendChild(topToDo);
-    const topProject = document.createElement("button");
+    //
+    topProject = document.createElement("button");
     topProject.innerText = "Project";
     topProject.classList.add("info-input-top-btn");
     topProject.classList.add("info-input-top-project-btn");
     top.appendChild(topProject);
-    const topNotes = document.createElement("button");
+    ///
+    topNotes = document.createElement("button");
     topNotes.innerText = "Notes";
     topNotes.classList.add("info-input-top-btn");
     topNotes.classList.add("info-input-top-notes-btn");
@@ -227,6 +233,35 @@ const userInterfaceModule = (() => {
     switchingContainer.appendChild(addNote);
   };
 
+  const assignEventListeners = () => {
+    if (topToDo) {
+      topToDo.addEventListener("click", () => {
+        displayToDoInterface();
+      });
+    }
+    if (topProject) {
+      topProject.addEventListener("click", () => {
+        displayProjectInterface();
+      });
+    }
+    if (topNotes) {
+      topNotes.addEventListener("click", () => {
+        displayNotesInterface();
+      });
+    }
+  };
+
+  const clearBottomInterface = () => {
+    // NO UNDEFINED
+    if (switchingContainer) {
+      //MIENTRAS HAYA UN DIV HIJO
+      while (switchingContainer.firstChild) {
+        //ELIMINAR EL HIJO
+        switchingContainer.removeChild(switchingContainer.firstChild);
+      }
+    }
+  };
+
   const displayMainInterface = () => {
     while (toDoRightContainer.firstChild) {
       toDoRightContainer.removeChild(toDoRightContainer.firstChild);
@@ -234,36 +269,37 @@ const userInterfaceModule = (() => {
     createUserInfoInputInterface();
   };
   const displayToDoInterface = () => {
-    while (switchingContainer.firstChild) {
-      switchingContainer.removeChild(switchingContainer.firstChild);
-    }
+    clearBottomInterface();
     createToDoInputInterface();
   };
   const displayProjectInterface = () => {
-    while (switchingContainer.firstChild) {
-      switchingContainer.removeChild(switchingContainer.firstChild);
-    }
+    clearBottomInterface();
     createProjectInputInterface();
   };
   const displayNotesInterface = () => {
-    while (switchingContainer.firstChild) {
-      switchingContainer.removeChild(switchingContainer.firstChild);
-    }
+    clearBottomInterface();
     createNotesInputInterface();
   };
+
   return {
     displayMainInterface,
     displayToDoInterface,
     displayProjectInterface,
     displayNotesInterface,
+    assignEventListeners,
   };
 })();
 
 const listenersModule = (() => {
-  const addCircleButton = document.querySelector("#add-side-btn");
-  addCircleButton.addEventListener("click", () => {
-    userInterfaceModule.displayMainInterface();
-  });
+  const openInterfaceListener = () => {
+    const circleAddButton = document.querySelector("#add-side-btn");
+    circleAddButton.addEventListener("click", () => {
+      userInterfaceModule.displayMainInterface();
+      userInterfaceModule.assignEventListeners();
+    });
+  };
+
+  openInterfaceListener();
 })();
 
 /*
