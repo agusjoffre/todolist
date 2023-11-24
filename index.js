@@ -160,26 +160,34 @@ const userInterfaceModule = (() => {
     switchingContainer.classList.add("switching-container");
     realContainer.appendChild(switchingContainer);
     toDoTitleInput = document.createElement("input");
+    toDoTitleInput.placeholder = "Title...";
     toDoTitleInput.classList.add("todo-title-input");
     switchingContainer.appendChild(toDoTitleInput);
     toDoDescriptionInput = document.createElement("textarea");
+    toDoDescriptionInput.placeholder = "Complete details...";
     toDoDescriptionInput.classList.add("todo-description-input");
     switchingContainer.appendChild(toDoDescriptionInput);
     const toDoBottom = document.createElement("div");
     toDoBottom.classList.add("todo-bottom");
     switchingContainer.appendChild(toDoBottom);
+    const toDoBottomLeft = document.createElement("div");
+    toDoBottomLeft.classList.add("todo-bottom-left");
+    toDoBottom.appendChild(toDoBottomLeft);
     const toDoDueDateTitle = document.createElement("p");
     toDoDueDateTitle.classList.add("todo-duedate-title");
     toDoDueDateTitle.innerText = "Due date: ";
-    toDoBottom.appendChild(toDoDueDateTitle);
+    toDoBottomLeft.appendChild(toDoDueDateTitle);
     toDoDueDateInput = document.createElement("input");
     toDoDueDateInput.type = "date";
     toDoDueDateInput.classList.add("todo-duedate-input");
-    toDoBottom.appendChild(toDoDueDateInput);
+    toDoBottomLeft.appendChild(toDoDueDateInput);
+    const toDoBottomRight = document.createElement("div");
+    toDoBottomRight.classList.add("todo-bottom-right");
+    toDoBottom.appendChild(toDoBottomRight);
     toDoAdd = document.createElement("button");
     toDoAdd.classList.add("todo-add-button");
     toDoAdd.innerText = "Add";
-    toDoBottom.appendChild(toDoAdd);
+    toDoBottomRight.appendChild(toDoAdd);
   };
 
   let projectTitleInput;
@@ -190,6 +198,7 @@ const userInterfaceModule = (() => {
     realContainer.appendChild(switchingContainer);
     projectTitleInput = document.createElement("input");
     projectTitleInput.classList.add("project-title-input");
+    projectTitleInput.placeholder = "Project title...";
     switchingContainer.appendChild(projectTitleInput);
     addProject = document.createElement("button");
     addProject.classList.add("project-add-btn");
@@ -206,9 +215,11 @@ const userInterfaceModule = (() => {
     realContainer.appendChild(switchingContainer);
     noteTitleInput = document.createElement("input");
     noteTitleInput.classList.add("notes-title-input");
+    noteTitleInput.placeholder = "Note title...";
     switchingContainer.appendChild(noteTitleInput);
     noteDetailsInput = document.createElement("textarea");
     noteDetailsInput.classList.add("notes-details-input");
+    noteDetailsInput.placeholder = "Complete details...";
     switchingContainer.appendChild(noteDetailsInput);
     addNote = document.createElement("button");
     addNote.classList.add("notes-add-btn");
@@ -221,6 +232,7 @@ const userInterfaceModule = (() => {
       toDoRightContainer.removeChild(toDoRightContainer.firstChild);
     }
     createUserInfoInputInterface();
+    createNotesInputInterface();
   };
   const displayToDoInterface = () => {
     while (switchingContainer.firstChild) {

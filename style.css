@@ -277,8 +277,6 @@ header strong {
   border: solid 1.5px rgba(255, 255, 255, 0.12);
   background-color: var(--light-dark);
   border-radius: 11px;
-  padding-left: 50px;
-  padding-right: 50px;
 }
 
 .info-input-top {
@@ -286,15 +284,157 @@ header strong {
   align-items: center;
   gap: 80px;
   margin-top: 35px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 .info-input-top-btn {
   text-align: center;
-  border-bottom: solid 1px white;
+  border-bottom: solid 1px rgb(176, 176, 176);
   width: 100px;
-  color: white;
+  color: rgb(208, 208, 208);
   font-weight: 600;
   font-size: 12px;
   padding-bottom: 13px;
   margin-bottom: 25px;
+}
+
+.info-input-top-btn:hover {
+  border-bottom: solid 1px white;
+  color: white;
+}
+
+.switching-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.todo-title-input {
+  color: white;
+  background-color: var(--primary);
+  border: solid 1.5px var(--light-dark);
+  height: 16px;
+  padding: 16px;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  border-radius: 11px;
+}
+
+.todo-description-input {
+  color: white;
+  background-color: var(--primary);
+  border: solid 1.5px var(--light-dark);
+  font-size: 12px;
+  font-weight: 400;
+  width: 910px;
+  height: 190px;
+  padding: 30px;
+  border-radius: 11px;
+  margin-bottom: 10px;
+}
+
+.todo-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.todo-bottom-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.todo-duedate-title {
+  color: white;
+  font-size: 13px;
+  font-weight: 300;
+  margin-left: 5px;
+}
+
+.todo-duedate-input {
+  border: none;
+  border-radius: 3px;
+  text-align: center;
+  background-color: var(--alert);
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  width: 107px;
+  height: 25px;
+}
+
+.todo-bottom-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.todo-add-button {
+  background-color: var(--alert);
+  color: white;
+  font-weight: 500;
+  border-radius: 3px;
+  width: 55px;
+  height: 23px;
+}
+
+.project-title-input {
+  color: white;
+  background-color: var(--primary);
+  border: solid 1.5px var(--light-dark);
+  height: 16px;
+  padding: 16px;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  border-radius: 11px;
+}
+
+.project-add-btn {
+  margin-left: 5px;
+  background-color: var(--alert);
+  color: white;
+  font-weight: 500;
+  border-radius: 3px;
+  width: 55px;
+  height: 23px;
+}
+
+.notes-title-input {
+  color: white;
+  background-color: var(--primary);
+  border: solid 1.5px var(--light-dark);
+  height: 16px;
+  padding: 16px;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  border-radius: 11px;
+}
+
+.notes-details-input {
+  color: white;
+  background-color: var(--primary);
+  border: solid 1.5px var(--light-dark);
+  font-size: 12px;
+  font-weight: 400;
+  width: 910px;
+  height: 190px;
+  padding: 30px;
+  border-radius: 11px;
+  margin-bottom: 10px;
+}
+
+.notes-add-btn {
+  margin-left: 5px;
+  background-color: var(--alert);
+  color: white;
+  font-weight: 500;
+  border-radius: 3px;
+  width: 55px;
+  height: 23px;
 }
