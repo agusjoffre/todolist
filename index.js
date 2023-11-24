@@ -125,6 +125,7 @@ const userInterfaceModule = (() => {
     containerOfContainers.classList.add("info-input-container");
     wrapper.appendChild(containerOfContainers);
     const containerTitle = document.createElement("p");
+    containerTitle.innerText = "Create a new...";
     containerTitle.classList.add("info-input-container-title");
     containerOfContainers.appendChild(containerTitle);
     realContainer = document.createElement("div");
@@ -134,12 +135,18 @@ const userInterfaceModule = (() => {
     top.classList.add("info-input-top");
     realContainer.appendChild(top);
     const topToDo = document.createElement("button");
+    topToDo.innerText = "To Do";
+    topToDo.classList.add("info-input-top-btn");
     topToDo.classList.add("info-input-top-todo-btn");
     top.appendChild(topToDo);
     const topProject = document.createElement("button");
+    topProject.innerText = "Project";
+    topProject.classList.add("info-input-top-btn");
     topProject.classList.add("info-input-top-project-btn");
     top.appendChild(topProject);
     const topNotes = document.createElement("button");
+    topNotes.innerText = "Notes";
+    topNotes.classList.add("info-input-top-btn");
     topNotes.classList.add("info-input-top-notes-btn");
     top.appendChild(topNotes);
   };
