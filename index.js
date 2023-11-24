@@ -40,8 +40,8 @@ const infoModule = (() => {
   // ToDos array
   const toDos = [];
   // ToDo creation fn
-  const createToDo = (title, description, dueDate, notes, checklist) => {
-    const newTodo = new Todo(title, description, dueDate, notes, checklist);
+  const createToDo = (title, description, dueDate, checklist) => {
+    const newTodo = new Todo(title, description, dueDate, checklist);
     toDos.push(newTodo);
     projectDetails.push(newTodo);
   };
@@ -54,15 +54,15 @@ const infoModule = (() => {
     projectDetails.push(newNote);
   };
 
-  const deleteProject = (i) => {
-    projects.splice(i);
-  };
-  const deleteToDo = (i) => {
-    toDos.splice(i);
-  };
-  const deleteNote = (i) => {
-    notes.splice(i);
-  };
+  // const deleteProject = (i) => {
+  //   projects.splice(i);
+  // };
+  // const deleteToDo = (i) => {
+  //   toDos.splice(i);
+  // };
+  // const deleteNote = (i) => {
+  //   notes.splice(i);
+  // };
 
   return {
     projectDetails,
@@ -77,14 +77,20 @@ const infoModule = (() => {
 
 const addInfoModule = (() => {
   const sendToDoInfo = (title, description, dueDate) => {
-    console.log(title, description, dueDate);
+    infoModule.createToDo(title, description, dueDate, false);
+    console.log(infoModule.toDos);
+    console.log(infoModule.projects);
   };
   const sendProjectInfo = (title) => {
-    console.log(title);
+    infoModule.createProject(title, infoModule.projectDetails);
+    console.log(infoModule.projects);
   };
   const sendNotesInfo = (title, details) => {
-    console.log(title, details);
+    infoModule.createNote(title, details);
+    console.log(infoModule.notes);
+    console.log(infoModule.projects);
   };
+
   return {
     sendToDoInfo,
     sendProjectInfo,
@@ -286,6 +292,7 @@ const userInterfaceModule = (() => {
         const title = toDoForm.elements.title.value;
         const description = toDoForm.elements.description.value;
         const dueDate = toDoForm.elements.dueDate.value;
+        console.log(title, description, dueDate);
         addInfoModule.sendToDoInfo(title, description, dueDate);
       });
     }
@@ -293,7 +300,7 @@ const userInterfaceModule = (() => {
       projectForm.addEventListener("submit", (e) => {
         e.preventDefault();
         const title = projectForm.elements.title.value;
-        console.log("Hola");
+        console.log(title);
         addInfoModule.sendProjectInfo(title);
       });
     }
@@ -302,7 +309,7 @@ const userInterfaceModule = (() => {
         e.preventDefault();
         const title = notesForm.elements.title.value;
         const details = notesForm.elements.details.value;
-        console.log("Hola");
+        console.log(title, details);
         addInfoModule.sendNotesInfo(title, details);
       });
     }
@@ -328,6 +335,7 @@ const userInterfaceModule = (() => {
   const displayToDoInterface = () => {
     clearBottomInterface();
     createToDoInputInterface();
+    assignEventListeners();
   };
   const displayProjectInterface = () => {
     clearBottomInterface();
