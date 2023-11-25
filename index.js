@@ -380,6 +380,125 @@ const listenersModule = (() => {
   openInterfaceListener();
 })();
 
+const tasksInterfacesModule = (() => {
+  const toDoRightContainer = document.querySelector(".todo-right");
+  const createCards = (toDoName, date) => {
+    // create elements
+    const cardWrapper = document.createElement("div");
+    const leftCard = document.createElement("div");
+    const checkCardButton = document.createElement("button");
+    const cardName = document.createElement("p");
+    const rightCard = document.createElement("div");
+    const cardDetailsButton = document.createElement("button");
+    const cardDateButton = document.createElement("button");
+    const cardDeleteButton = document.createElement("button");
+
+    // adding classes
+    cardWrapper.classList.add("card-wrapper");
+    leftCard.classList.add("left-card");
+    checkCardButton.classList.add("check-card-btn");
+    cardName.classList.add("task-name");
+    rightCard.classList.add("right-card");
+    cardDetailsButton.classList.add("card-detail-btn");
+    cardDateButton.classList.add("card-date-btn");
+    cardDeleteButton.classList.add("card-delete-btn");
+
+    // appending
+    toDoRightContainer.appendChild(cardWrapper);
+    cardWrapper.appendChild(leftCard);
+    leftCard.appendChild(checkCardButton);
+    leftCard.appendChild(cardName);
+    cardWrapper.appendChild(rightCard);
+    rightCard.appendChild(cardDetailsButton);
+    rightCard.appendChild(cardDateButton);
+    rightCard.appendChild(cardDeleteButton);
+
+    // inner text
+    cardDetailsButton.innerText = "DETAILS";
+    cardDeleteButton.innerText = "X";
+    cardName.innerText = toDoName;
+    cardDateButton.innerText = date;
+  };
+
+  const displayCards = (toDoName, date) => {
+    while (toDoRightContainer.firstChild) {
+      toDoRightContainer.removeChild(toDoRightContainer.firstChild);
+    }
+    createCards(toDoName, date);
+  };
+  const createCardDetails = (project, _todo, _description, _dueDate) => {
+    // create elements
+    const wrapper = document.createElement("div");
+    const title = document.createElement("p");
+    const container = document.createElement("div");
+    const div1 = document.createElement("div");
+    const proj = document.createElement("p");
+    const projectName = document.createElement("h1");
+    const div2 = document.createElement("div");
+    const todo = document.createElement("p");
+    const toDoName = document.createElement("h1");
+    const div3 = document.createElement("div");
+    const descr = document.createElement("p");
+    const description = document.createElement("p");
+    const div4 = document.createElement("div");
+    const dueda = document.createElement("p");
+    const dueDate = document.createElement("p");
+
+    // adding class
+    wrapper.classList.add("detail-wrapper");
+    title.classList.add("detail-title");
+    container.classList.add("detail-container");
+    div1.classList.add("detail-project-container");
+    proj.classList.add("detail-project-label");
+    projectName.classList.add("detail-project-name");
+    div2.classList.add("detail-todo-container");
+    todo.classList.add("detail-todo-label");
+    toDoName.classList.add("detail-todo-name");
+    div3.classList.add("detail-description-container");
+    descr.classList.add("detail-description-label");
+    description.classList.add("detail-description");
+    div4.classList.add("detail-duedate-container");
+    dueda.classList.add("detail-duedate-label");
+    dueDate.classList.add("detail-duedate");
+
+    // inner text
+    title.innerText = "Details...";
+    proj.innerText = "Project: ";
+    projectName.innerText = project;
+    todo.innerText = "Task: ";
+    toDoName.innerText = _todo;
+    descr.innerText = "Description: ";
+    description.innerText = _description;
+    dueda.innerText = "Due date: ";
+    dueDate.innerText = _dueDate;
+
+    // appending
+    toDoRightContainer.appendChild(wrapper);
+    wrapper.appendChild(title);
+    wrapper.appendChild(container);
+    container.appendChild(div1);
+    div1.appendChild(proj);
+    div1.appendChild(projectName);
+    container.appendChild(div2);
+    div2.appendChild(todo);
+    div2.appendChild(toDoName);
+    container.appendChild(div3);
+    div3.appendChild(descr);
+    div3.appendChild(description);
+    container.appendChild(div4);
+    div4.appendChild(dueda);
+    div4.appendChild(dueDate);
+  };
+  const displayCardDetails = () => {
+    while (toDoRightContainer.firstChild) {
+      toDoRightContainer.removeChild(toDoRightContainer.firstChild);
+    }
+    createCardDetails();
+  };
+  const createProjectList = () => {};
+  const displayProjectList = () => {};
+})();
+
 /*
 //----------------------------testing--------------------------------------------//
 let note1 = createInfoModule.createNote("Test Note", "Test Note Details...");
