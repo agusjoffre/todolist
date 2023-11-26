@@ -1,10 +1,8 @@
-import { projectFactory, toDoFactory, noteFactory } from './factory';
 import toDoCreationlogicModule from './logic';
 import createDefault from './default';
 
 const ToDoCreationlogicModule = toDoCreationlogicModule();
-
-createDefault();
+createDefault(ToDoCreationlogicModule);
 
 // const userInterfaceModule = (() => {
 //   const toDoRightContainer = document.querySelector('.todo-right');
