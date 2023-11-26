@@ -1,8 +1,20 @@
 import toDoCreationlogicModule from './logic';
 import createDefault from './default';
+import { selectSidebar, selectAside } from './DOMMain';
+import { createInterface } from './DOMInterfacesCreation';
 
 const ToDoCreationlogicModule = toDoCreationlogicModule();
 createDefault(ToDoCreationlogicModule);
+
+// function test() {
+//   const button = selectSidebar().addSideButton;
+//   button.addEventListener('click', () => {
+//     createInterface().createAll();
+//     createInterface().appendAll();
+//   });
+// }
+
+// test();
 
 // const userInterfaceModule = (() => {
 //   const toDoRightContainer = document.querySelector('.todo-right');

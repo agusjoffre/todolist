@@ -69,10 +69,11 @@ const createInterface = (() => {
   });
 
   const appendAll = () => {
-    const wrapper = selectAside.wrapper();
+    const { wrapper } = selectAside();
     // nombre estandar (elements)
     const elements = createAll();
-    wrapper.appendChild(elements.container);
+    wrapper().appendChild(elements.container);
+
     elements.container.appendChild(elements.heading);
     elements.container.appendChild(elements.box);
     elements.box.appendChild(elements.boxTopDiv);

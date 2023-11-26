@@ -19,7 +19,7 @@ const selectAside = (() => {
     return wrapp;
   };
 
-  return { wrapper };
+  return { wrapper, container };
 });
 
 const createProjectSection = (() => {});
