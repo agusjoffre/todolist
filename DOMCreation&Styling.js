@@ -7,17 +7,19 @@ const selectSidebar = (() => {
 
 const selectAside = (() => {
   const container = () => {
-    const toDoRightContainer = document.querySelector('.toDoRightContainer');
+    const toDoRightContainer = document.querySelector('.todo-right');
     return toDoRightContainer;
   };
 
   const wrapper = () => {
     const wrapp = document.createElement('div');
     wrapp.classList.add('info-input-wrapper');
+    const toDoRightContainer = selectAside.container();
+    toDoRightContainer.appendChild(wrapp);
     return wrapp;
   };
 
-  return { container, wrapper };
+  return { wrapper };
 });
 
 const createInterface = (() => {
@@ -76,10 +78,36 @@ const createInterface = (() => {
     return swContainer;
   };
 
+  const createAll = () => {
+    container();
+    heading();
+    box();
+    boxTopDiv();
+    topToDoBtn();
+    topProjectBtn();
+    topNotesBtn();
+    switchingContainer();
+  };
+
+  const appendAll = () => {
+    const wrapper = selectAside.wrapper();
+    const cont = createInterface.container();
+    wrapper.appendChild(cont);
+    cont.appendChild(heading());
+    cont.appendChild(box());
+    box.appendChild(boxTopDiv());
+    boxTopDiv.appendChild(topToDoBtn());
+    boxTopDiv.appendChild(topProjectBtn());
+    boxTopDiv.appendChild(topNotesBtn());
+    box.appendChild(switchingContainer());
+  };
+
   return {
-    container, heading, box, boxTopDiv, topToDoBtn, topProjectBtn, topNotesBtn, switchingContainer,
+    createAll, appendAll, switchingContainer,
   };
 });
+
+createInterface().createAll().topToDoBtn().addEventListener('click', () => { console.log('hola'); });
 
 const createToDoInterface = (() => {
   const toDoForm = () => {
@@ -145,7 +173,7 @@ const createToDoInterface = (() => {
   };
 
   return {
-    toDoForm, titleInput, descriptionInput, bottomWrapper, bottomLeft, dueDateLabel, dueDateInput, bottomRight, addBtn,
+
   };
 });
 
@@ -204,7 +232,7 @@ const createNoteInterface = () => {
   };
 
   return {
-    notesForm, titleInput, detailsInput, addButton,
+
   };
 };
 
