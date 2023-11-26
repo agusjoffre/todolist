@@ -1,26 +1,4 @@
-const selectSidebar = (() => {
-  const todayButton = document.querySelector('.today-btn');
-  const addSideButton = document.querySelector('#add-side-btn');
-  const homeButton = document.querySelector('.home-btn');
-  return { addSideButton, homeButton, todayButton };
-});
-
-const selectAside = (() => {
-  const container = () => {
-    const toDoRightContainer = document.querySelector('.todo-right');
-    return toDoRightContainer;
-  };
-
-  const wrapper = () => {
-    const wrapp = document.createElement('div');
-    wrapp.classList.add('info-input-wrapper');
-    const toDoRightContainer = selectAside.container();
-    toDoRightContainer.appendChild(wrapp);
-    return wrapp;
-  };
-
-  return { wrapper };
-});
+import { selectAside } from './DOMMain';
 
 const createInterface = (() => {
   const container = () => {
@@ -78,36 +56,36 @@ const createInterface = (() => {
     return swContainer;
   };
 
-  const createAll = () => {
-    container();
-    heading();
-    box();
-    boxTopDiv();
-    topToDoBtn();
-    topProjectBtn();
-    topNotesBtn();
-    switchingContainer();
-  };
+  // ayudin...
+  const createAll = () => ({
+    container: container(),
+    heading: heading(),
+    box: box(),
+    boxTopDiv: boxTopDiv(),
+    topToDoBtn: topToDoBtn(),
+    topProjectBtn: topProjectBtn(),
+    topNotesBtn: topNotesBtn(),
+    switchingContainer: switchingContainer(),
+  });
 
   const appendAll = () => {
     const wrapper = selectAside.wrapper();
-    const cont = createInterface.container();
-    wrapper.appendChild(cont);
-    cont.appendChild(heading());
-    cont.appendChild(box());
-    box.appendChild(boxTopDiv());
-    boxTopDiv.appendChild(topToDoBtn());
-    boxTopDiv.appendChild(topProjectBtn());
-    boxTopDiv.appendChild(topNotesBtn());
-    box.appendChild(switchingContainer());
+    // nombre estandar (elements)
+    const elements = createAll();
+    wrapper.appendChild(elements.container);
+    elements.container.appendChild(elements.heading);
+    elements.container.appendChild(elements.box);
+    elements.box.appendChild(elements.boxTopDiv);
+    elements.boxTopDiv.appendChild(elements.topToDoBtn);
+    elements.boxTopDiv.appendChild(elements.topProjectBtn);
+    elements.boxTopDiv.appendChild(elements.topNotesBtn);
+    elements.box.appendChild(elements.switchingContainer);
   };
 
   return {
     createAll, appendAll, switchingContainer,
   };
 });
-
-createInterface().createAll().topToDoBtn().addEventListener('click', () => { console.log('hola'); });
 
 const createToDoInterface = (() => {
   const toDoForm = () => {
@@ -172,9 +150,33 @@ const createToDoInterface = (() => {
     return button;
   };
 
-  return {
+  const createAll = () => ({
+    form: toDoForm(),
+    titleInput: titleInput(),
+    descriptionInput: descriptionInput(),
+    bottomWrapper: bottomWrapper(),
+    bottomLeft: bottomLeft(),
+    dueDateLabel: dueDateLabel(),
+    dueDateInput: dueDateInput(),
+    bottomRight: bottomRight(),
+    addBtn: addBtn(),
+  });
 
+  const appendAll = () => {
+    const { switchingContainer } = createInterface;
+    const elements = createAll();
+    switchingContainer.appendChild(elements.form);
+    elements.form.appendChild(elements.titleInput);
+    elements.form.appendChild(elements.descriptionInput);
+    elements.form.appendChild(elements.bottomWrapper);
+    elements.bottomWrapper.appendChild(elements.bottomLeft);
+    elements.bottomLeft.appendChild(elements.dueDateLabel);
+    elements.bottomLeft.appendChild(elements.dueDateInput);
+    elements.bottomWrapper.appendChild(elements.bottomRight);
+    elements.bottomRight.appendChild(elements.addBtn);
   };
+
+  return { createAll, appendAll };
 });
 
 const createProjectInterface = (() => {
@@ -198,7 +200,20 @@ const createProjectInterface = (() => {
     button.innerText = 'Add';
     return button;
   };
-  return { projectForm, titleInput, addProjectButton };
+  const createAll = () => ({
+    form: projectForm(),
+    titleInput: titleInput(),
+    addProjectButton: addProjectButton(),
+  });
+
+  const appendAll = () => {
+    const { switchingContainer } = createInterface;
+    const elements = createAll();
+    switchingContainer.appendChild(elements.form);
+    elements.form.appendChild(elements.titleInput);
+    elements.form.appendChild(elements.addProjectButton);
+  };
+  return { createAll, appendAll };
 });
 
 const createNoteInterface = () => {
@@ -230,12 +245,25 @@ const createNoteInterface = () => {
     button.innerText = 'Add';
     return button;
   };
+  const createAll = () => ({
+    form: notesForm(),
+    titleInput: titleInput(),
+    detailsInput: detailsInput(),
+    addButton: addButton(),
+  });
 
-  return {
-
+  const appendAll = () => {
+    const { switchingContainer } = createInterface;
+    const elements = createAll();
+    switchingContainer.appendChild(elements.form);
+    elements.form.appendChild(elements.titleInput);
+    elements.form.appendChild(elements.detailsInput);
+    elements.form.appendChild(elements.addButton);
   };
+
+  return { createAll, appendAll };
 };
 
 export {
-  selectSidebar, selectAside, createInterface, createToDoInterface, createProjectInterface, createNoteInterface,
+  createInterface, createToDoInterface, createProjectInterface, createNoteInterface,
 };
