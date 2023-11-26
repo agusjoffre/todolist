@@ -7,7 +7,7 @@ const toDoCreationlogicModule = (() => {
   const createProject = (name, details) => {
     const newProject = projectFactory(name, details);
     projects.push(newProject);
-    // printProjects(projects);
+    printProjects(projects);
   };
 
   const addToDoInProject = (toDo, projectIndex) => {
