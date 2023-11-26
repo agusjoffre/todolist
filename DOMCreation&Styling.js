@@ -168,6 +168,7 @@ const createProjectInterface = (() => {
     button.classList.add('project-add-btn');
     button.type = 'submit';
     button.innerText = 'Add';
+    return button;
   };
   return { projectForm, titleInput, addProjectButton };
 });
@@ -205,4 +206,8 @@ const createNoteInterface = () => {
   return {
     notesForm, titleInput, detailsInput, addButton,
   };
+};
+
+export {
+  selectSidebar, selectAside, createInterface, createToDoInterface, createProjectInterface, createNoteInterface,
 };
