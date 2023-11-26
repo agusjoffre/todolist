@@ -22,12 +22,6 @@ const selectAside = (() => {
   return { wrapper, container };
 });
 
-const createProjectSection = (() => {});
-
-const createNotesSection = (() => {});
-
-const createTodaySection = (() => {});
-
-const createWeekSection = (() => {});
-
-export { selectSidebar, selectAside };
+export {
+  selectSidebar, selectAside,
+};
