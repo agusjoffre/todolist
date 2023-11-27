@@ -1,24 +1,45 @@
 import {
   createInterface, createNoteInterface, createProjectInterface, createToDoInterface,
 } from './DOMInterfacesCreation';
+
+import {
+  createProjectSection, createNotesSection, createTodaySection, createWeekSection, createToDoSection,
+} from './DOMSectionsCreation';
+
 import { selectAside, selectSidebar } from './DOMMain';
 
-const printProjects = (projects) => {
-  projects.forEach((project) => {
-    const projectName = document.createElement('div');
-    projectName.innerText = project.name;
-    const projectDetails = document.createElement('div');
-    projectDetails.innerText = project.details;
-    const toDoQ = document.createElement('div');
-    toDoQ.innerText = project.toDo.length;
-  });
-};
+const printSections = (() => {
+  const asideContainer = selectAside().wrapper;
+  const clearWrapper = () => {
+    if (asideContainer) {
+      while (asideContainer.firstChild) {
+        asideContainer.removeChild(asideContainer.firstChild);
+      }
+    }
+  };
 
-const aside = document.querySelector('.todo-right');
-const button = document.querySelector('.projects-btn');
+  const printProjects = (projects) => {
+    clearWrapper();
+    projects.forEach((project) => {
+      createProjectSection().createAll(project.name, project.toDo.lenght, project.details);
+    });
+  };
 
-button.addEventListener('click', () => {
-  aside.appendChild(printProjects());
+  const printNotes = (notes) => {
+    clearWrapper();
+    notes.forEach((note) => {
+      createNotesSection().createAll(note.name, note.details);
+    });
+  };
+
+  const printToDos = (toDos) => {
+    clearWrapper();
+    toDos.forEach((todo) => {
+      createToDoSection().createAll(todo.name, todo.duedate);
+    });
+  };
+
+  return { printProjects, printNotes, printToDos };
 });
 
 const printInterfaceModule = (() => {
