@@ -81,6 +81,6 @@ const printInterfaceModule = (() => {
   };
 });
 
-export default {
-  printProjects, printInterfaceModule,
+export {
+  printSections, printInterfaceModule,
 };

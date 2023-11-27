@@ -1,5 +1,5 @@
 import { projectFactory, toDoFactory, noteFactory } from './factory';
-import printProjects from './print';
+import { printSections } from './print';
 
 const toDoCreationlogicModule = (() => {
   const projects = [];
@@ -7,7 +7,7 @@ const toDoCreationlogicModule = (() => {
   const createProject = (name, details) => {
     const newProject = projectFactory(name, details);
     projects.push(newProject);
-    printProjects(projects);
+    printSections().printProjects(projects);
   };
 
   const addToDoInProject = (toDo, projectIndex) => {
