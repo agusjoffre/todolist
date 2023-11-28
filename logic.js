@@ -4,10 +4,9 @@ import { printSections } from './print';
 const toDoCreationlogicModule = (() => {
   const projects = [];
   // const projectDetails = [];
-  const createProject = (name, details) => {
+  const createProject = ({ name, details }) => {
     const newProject = projectFactory(name, details);
     projects.push(newProject);
-    printSections().printProjects(projects);
   };
 
   const addToDoInProject = (toDo, projectIndex) => {

@@ -11,11 +11,14 @@ const selectAside = (() => {
     return toDoRightContainer;
   };
 
+  let wrapp;
   const wrapper = () => {
-    const wrapp = document.createElement('div');
-    wrapp.classList.add('info-input-wrapper');
-    const toDoRightContainer = container();
-    toDoRightContainer.appendChild(wrapp);
+    if (!wrapp) {
+      wrapp = document.createElement('div');
+      wrapp.classList.add('info-input-wrapper');
+      const toDoRightContainer = container();
+      toDoRightContainer.appendChild(wrapp);
+    }
     return wrapp;
   };
 

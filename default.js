@@ -1,7 +1,7 @@
 const createDefault = (ToDoCreationlogicModule) => {
-  ToDoCreationlogicModule.createProject('Test project', 'Some test details of the project');
+  ToDoCreationlogicModule.createProject({ name: 'Test project', details: 'Some test details of the project' });
 
-  ToDoCreationlogicModule.createProject('Test project2', 'Some test details of the project2');
+  ToDoCreationlogicModule.createProject({ name: 'Test project2', details: 'Some test details of the project2' });
 
   ToDoCreationlogicModule.createToDo('Test To Do1', 'Test description1', 25 / 11 / 23, 'Some testing notes1...', false, 0);
 

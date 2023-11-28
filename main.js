@@ -2,8 +2,13 @@ import toDoCreationlogicModule from './logic';
 import createDefault from './default';
 import { selectSidebar, selectAside } from './DOMMain';
 import { createInterface } from './DOMInterfacesCreation';
+import sideBarListeners from './DOMListeners';
 
 const ToDoCreationlogicModule = toDoCreationlogicModule();
+sideBarListeners().addCircleButton();
+console.log(ToDoCreationlogicModule);
+sideBarListeners().projectButton(ToDoCreationlogicModule.projects);
+console.log(ToDoCreationlogicModule.projects);
 createDefault(ToDoCreationlogicModule);
 
 // function test() {

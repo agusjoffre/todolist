@@ -200,5 +200,6 @@ const createTodaySection = (() => {});
 const createWeekSection = (() => {});
 
 export {
+  // eslint-disable-next-line max-len
   createProjectSection, createNotesSection, createTodaySection, createWeekSection, createToDoSection,
 };
