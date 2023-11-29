@@ -6,9 +6,7 @@ import sideBarListeners from './DOMListeners';
 
 const ToDoCreationlogicModule = toDoCreationlogicModule();
 sideBarListeners().addCircleButton();
-console.log(ToDoCreationlogicModule);
 sideBarListeners().projectButton(ToDoCreationlogicModule.projects);
-console.log(ToDoCreationlogicModule.projects);
 createDefault(ToDoCreationlogicModule);
 
 // function test() {

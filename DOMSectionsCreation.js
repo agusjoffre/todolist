@@ -49,27 +49,26 @@ const createProjectSection = (() => {
     return detail;
   };
 
-  const createAll = (projectName, toDoQ, details) => ({
+  const createAll = () => ({
     projCard: projCard(),
     topDiv: topDiv(),
-    projectTitle: projectTitle(projectName),
-    toDoCounter: toDoCounter(toDoQ),
     bottomDiv: bottomDiv(),
     detailsLabel: detailsLabel(),
-    detailsP: detailsP(details),
   });
 
-  const appendAll = () => {
+  const appendAll = (name, todoq, details) => {
     const elements = createAll();
     wrapper().appendChild(elements.projCard);
     elements.projCard.appendChild(elements.topDiv);
-    elements.topDiv.appendChild(elements.projectTitle);
-    elements.topDiv.appendChild(elements.toDoCounter);
+    elements.topDiv.appendChild(projectTitle(name));
+    elements.topDiv.appendChild(toDoCounter(todoq));
     elements.bottomDiv.appendChild(elements.detailsLabel);
-    elements.bottomDiv.appendChild(elements.detailsP);
+    elements.bottomDiv.appendChild(detailsP(details));
   };
 
-  return { createAll, appendAll };
+  return {
+    createAll, appendAll, projectTitle, detailsP, toDoCounter,
+  };
 });
 
 const createNotesSection = (() => {

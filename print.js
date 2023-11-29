@@ -9,20 +9,27 @@ import {
 
 import { selectAside } from './DOMMain';
 
+const SelectAside = selectAside();
 const printSections = (() => {
-  const asideContainer = selectAside().wrapper();
   const clearWrapper = () => {
-    if (asideContainer) {
-      while (asideContainer.firstChild) {
-        asideContainer.removeChild(asideContainer.firstChild);
+    const wrapp = SelectAside.wrapper();
+    // console.log(wrapp);
+    if (wrapp) {
+      console.log(SelectAside.container());
+      console.log(wrapp);
+      console.log(wrapp.firstChild);
+      while (wrapp.firstChild) {
+        wrapp.removeChild(wrapp.firstChild);
       }
     }
   };
 
+  const CreateProjectSection = createProjectSection();
   const printProjects = (projects) => {
     clearWrapper();
     projects.forEach((project) => {
-      createProjectSection().createAll(project.name, project.toDo.length, project.details);
+      CreateProjectSection.createAll();
+      CreateProjectSection.appendAll(project.name, project.toDo.length, project.details);
     });
   };
 

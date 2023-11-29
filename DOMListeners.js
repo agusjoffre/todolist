@@ -13,7 +13,7 @@ const sideBarListeners = (() => {
   const projectButton = (projects) => {
     const projBtn = document.querySelector('.projects-btn');
     projBtn.addEventListener('click', () => {
-
+      printSections().printProjects(projects);
     });
   };
   return { addCircleButton, projectButton };
