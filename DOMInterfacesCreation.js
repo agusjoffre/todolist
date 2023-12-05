@@ -163,7 +163,7 @@ const createToDoInterface = (() => {
   });
 
   const appendAll = () => {
-    const { switchingContainer } = createInterface;
+    const switchingContainer = document.querySelector('.switching-container');
     const elements = createAll();
     switchingContainer.appendChild(elements.form);
     elements.form.appendChild(elements.titleInput);
@@ -207,7 +207,7 @@ const createProjectInterface = (() => {
   });
 
   const appendAll = () => {
-    const { switchingContainer } = createInterface;
+    const switchingContainer = document.querySelector('.switching-container');
     const elements = createAll();
     switchingContainer.appendChild(elements.form);
     elements.form.appendChild(elements.titleInput);
@@ -253,7 +253,7 @@ const createNoteInterface = () => {
   });
 
   const appendAll = () => {
-    const { switchingContainer } = createInterface;
+    const switchingContainer = document.querySelector('.switching-container');
     const elements = createAll();
     switchingContainer.appendChild(elements.form);
     elements.form.appendChild(elements.titleInput);

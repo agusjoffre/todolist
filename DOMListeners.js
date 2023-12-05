@@ -25,7 +25,20 @@ const interfaceListeners = (() => {
     });
   };
 
-  return { toDoInterfaceButton: toDoInterfaceButtonListener };
+  const projectInterfaceButtonListener = () => {
+    const projectInterfaceButton = document.querySelector('.info-input-top-project-btn');
+    projectInterfaceButton.addEventListener('click', () => {
+      printInterfaceModule().printAddProjectInterface();
+    });
+  };
+
+  const noteInteraceButtonListener = () => {
+    const noteInterfaceButton = document.querySelector('.info-input-top-notes-btn');
+    noteInterfaceButton.addEventListener('click', () => {
+      printInterfaceModule().printAddNotesInterface();
+    });
+  };
+  return { toDoInterfaceButtonListener, projectInterfaceButtonListener, noteInteraceButtonListener };
 });
 
 export { sideBarListeners, interfaceListeners };

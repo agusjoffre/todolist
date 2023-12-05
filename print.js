@@ -54,11 +54,9 @@ const printInterfaceModule = (() => {
   };
 
   const clearBottomInterface = () => {
-    const switchingContainer = createInterface().switchingContainer();
+    const switchingContainer = document.querySelector('.switching-container');
     if (switchingContainer) {
-      while (switchingContainer.firstChild) {
-        switchingContainer.removeChild(switchingContainer.firstChild);
-      }
+      switchingContainer.innerHTML = '';
     }
   };
 
@@ -66,7 +64,9 @@ const printInterfaceModule = (() => {
     clearWrapper();
     clearBottomInterface();
     createInterface().appendAll();
-    interfaceListeners().toDoInterfaceButton();
+    interfaceListeners().toDoInterfaceButtonListener();
+    interfaceListeners().projectInterfaceButtonListener();
+    interfaceListeners().noteInteraceButtonListener();
   };
 
   const printAddToDoInterface = () => {
