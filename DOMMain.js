@@ -6,23 +6,22 @@ const selectSidebar = (() => {
 });
 
 const selectAside = (() => {
-  const container = () => {
+  const selectContainer = () => {
     const toDoRightContainer = document.querySelector('.todo-right');
     return toDoRightContainer;
   };
 
-  let wrapp;
-  const wrapper = () => {
-    if (!wrapp) {
-      wrapp = document.createElement('div');
-      wrapp.classList.add('info-input-wrapper');
-      const toDoRightContainer = container();
-      toDoRightContainer.appendChild(wrapp);
-    }
-    return wrapp;
+  const createWrapper = () => {
+    let wrapper = document.querySelector('.info-input-wrapper');
+    if (!wrapper) {
+      wrapper = document.createElement('div');
+      wrapper.classList.add('info-input-wrapper');
+      const toDoRightContainer = selectContainer();
+      toDoRightContainer.appendChild(wrapper);
+    } return wrapper;
   };
 
-  return { wrapper, container };
+  return { wrapper: createWrapper, container: selectContainer };
 });
 
 export {

@@ -1,5 +1,6 @@
 import { selectAside } from './DOMMain';
 
+const { wrapper } = selectAside();
 const createInterface = (() => {
   const container = () => {
     const containerOfContainers = document.createElement('div');
@@ -69,11 +70,9 @@ const createInterface = (() => {
   });
 
   const appendAll = () => {
-    const { wrapper } = selectAside();
     // nombre estandar (elements)
     const elements = createAll();
     wrapper().appendChild(elements.container);
-
     elements.container.appendChild(elements.heading);
     elements.container.appendChild(elements.box);
     elements.box.appendChild(elements.boxTopDiv);

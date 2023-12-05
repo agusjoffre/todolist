@@ -4,20 +4,14 @@ import {
 
 import {
   // eslint-disable-next-line max-len
-  createProjectSection, createNotesSection, createTodaySection, createWeekSection, createToDoSection,
+  createProjectSection, createNotesSection, createToDoSection,
 } from './DOMSectionsCreation';
 
-import { selectAside } from './DOMMain';
-
-const SelectAside = selectAside();
 const printSections = (() => {
   const clearWrapper = () => {
-    const wrapp = SelectAside.wrapper();
-    // console.log(wrapp);
+    const wrapp = document.querySelector('.info-input-wrapper');
+    console.log(wrapp);
     if (wrapp) {
-      console.log(SelectAside.container());
-      console.log(wrapp);
-      console.log(wrapp.firstChild);
       while (wrapp.firstChild) {
         wrapp.removeChild(wrapp.firstChild);
       }
@@ -53,6 +47,13 @@ const printSections = (() => {
 });
 
 const printInterfaceModule = (() => {
+  const clearWrapper = () => {
+    const wrapp = document.querySelector('.info-input-wrapper');
+    if (wrapp) {
+      wrapp.innerHTML = '';
+    }
+  };
+
   const clearBottomInterface = () => {
     const switchingContainer = createInterface().switchingContainer();
     if (switchingContainer) {
@@ -63,27 +64,23 @@ const printInterfaceModule = (() => {
   };
 
   const printInterface = () => {
-    printSections().clearWrapper();
+    clearWrapper();
     clearBottomInterface();
-    createInterface().createAll();
     createInterface().appendAll();
   };
 
   const printAddToDoInterface = () => {
     clearBottomInterface();
-    createToDoInterface().createAll();
     createToDoInterface().appendAll();
   };
 
   const printAddProjectInterface = () => {
     clearBottomInterface();
-    createProjectInterface().createAll();
     createProjectInterface().appendAll();
   };
 
   const printAddNotesInterface = () => {
     clearBottomInterface();
-    createNoteInterface().createAll();
     createNoteInterface().appendAll();
   };
 
