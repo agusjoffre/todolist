@@ -1,5 +1,5 @@
 import { printInterfaceModule, printSections } from './print';
-import toDoCreationlogicModule from './logic';
+import ToDoCreationlogicModule from './main';
 
 const sideBarListeners = (() => {
   const addCircleButton = () => {
@@ -53,8 +53,9 @@ const inputListenersModule = (() => {
       const detailsValue = detailsInputDOM.value;
       const dueDateInputDOM = document.querySelector('.todo-duedate-input');
       const dueDateValue = dueDateInputDOM.value;
-      toDoCreationlogicModule().createToDo(titleValue, detailsValue, dueDateValue);
-      console.log(toDoCreationlogicModule().toDos);
+      console.log(ToDoCreationlogicModule.projects);
+      ToDoCreationlogicModule.createToDo(titleValue, detailsValue, dueDateValue, false, 0);
+      console.log(ToDoCreationlogicModule.toDos);
     });
   };
   return { getToDoInputValues };

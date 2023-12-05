@@ -9,9 +9,9 @@ const toDoCreationlogicModule = (() => {
   };
 
   const addToDoInProject = (todo, projectIndex) => {
-    console.log(projects);
     console.log(projectIndex);
-    console.log(projects[projectIndex]);
+    console.log(projects);
+    console.log(todo);
     projects[projectIndex].toDo.push(todo);
   };
 

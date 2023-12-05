@@ -1,7 +1,10 @@
 ----------------INSTRUCCIONES DEL SULTAN-----------------------
 1. Usar los input del DOM para añadir TO DOs.
-2. Que se printeen los To Dos, cuando click HOME.
-----------------------------------------------------------------
+2. Usar los input del DOM para añadir Proyectos.
+3. Que se printeen los To Dos, cuando click HOME.
+4. Agregar funcionalidad para elegir PROJECT INDEX.
+5. Elegir project index en DOM interfaz de creacion de to do.
+---------------------------------------------------------------
 
 
 
