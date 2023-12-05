@@ -18,14 +18,14 @@ const sideBarListeners = (() => {
 });
 
 const interfaceListeners = (() => {
-  const toDoInterfaceButton = () => {
+  const toDoInterfaceButtonListener = () => {
     const toDoButton = document.querySelector('.info-input-top-todo-btn');
     toDoButton.addEventListener('click', () => {
-      console.log('Hola');
       printInterfaceModule().printAddToDoInterface();
     });
   };
-  return { toDoInterfaceButton };
+
+  return { toDoInterfaceButton: toDoInterfaceButtonListener };
 });
 
 export { sideBarListeners, interfaceListeners };

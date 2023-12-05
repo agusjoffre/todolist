@@ -1,16 +1,15 @@
 import {
   createInterface, createNoteInterface, createProjectInterface, createToDoInterface,
 } from './DOMInterfacesCreation';
-
 import {
   // eslint-disable-next-line max-len
   createProjectSection, createNotesSection, createToDoSection,
 } from './DOMSectionsCreation';
+import { interfaceListeners } from './DOMListeners';
 
 const printSections = (() => {
   const clearWrapper = () => {
     const wrapp = document.querySelector('.info-input-wrapper');
-    console.log(wrapp);
     if (wrapp) {
       while (wrapp.firstChild) {
         wrapp.removeChild(wrapp.firstChild);
@@ -67,6 +66,7 @@ const printInterfaceModule = (() => {
     clearWrapper();
     clearBottomInterface();
     createInterface().appendAll();
+    interfaceListeners().toDoInterfaceButton();
   };
 
   const printAddToDoInterface = () => {

@@ -5,7 +5,6 @@ import { sideBarListeners, interfaceListeners } from './DOMListeners';
 const ToDoCreationlogicModule = toDoCreationlogicModule();
 sideBarListeners().addCircleButton();
 sideBarListeners().projectButton(ToDoCreationlogicModule.projects);
-interfaceListeners().toDoInterfaceButton();
 createDefault(ToDoCreationlogicModule);
 
 // function test() {
