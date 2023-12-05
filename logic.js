@@ -1,5 +1,4 @@
 import { projectFactory, toDoFactory, noteFactory } from './factory';
-import { printSections } from './print';
 
 const toDoCreationlogicModule = (() => {
   const projects = [];
@@ -9,8 +8,11 @@ const toDoCreationlogicModule = (() => {
     projects.push(newProject);
   };
 
-  const addToDoInProject = (toDo, projectIndex) => {
-    projects[projectIndex].toDo.push(toDo);
+  const addToDoInProject = (todo, projectIndex) => {
+    console.log(projects);
+    console.log(projectIndex);
+    console.log(projects[projectIndex]);
+    projects[projectIndex].toDo.push(todo);
   };
 
   const addNoteInProject = (note, projectIndex) => {
@@ -18,8 +20,8 @@ const toDoCreationlogicModule = (() => {
   };
 
   const toDos = [];
-  const createToDo = (name, description, dueDate, notes, check, projectIndex) => {
-    const newToDo = toDoFactory(name, description, dueDate, notes, check, projectIndex);
+  const createToDo = (name, description, dueDate, check, projectIndex) => {
+    const newToDo = toDoFactory(name, description, dueDate, check, projectIndex);
     toDos.push(newToDo);
     addToDoInProject(newToDo, projectIndex);
   };

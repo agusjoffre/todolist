@@ -5,7 +5,7 @@ import {
   // eslint-disable-next-line max-len
   createProjectSection, createNotesSection, createToDoSection,
 } from './DOMSectionsCreation';
-import { interfaceListeners } from './DOMListeners';
+import { interfaceListeners, inputListenersModule } from './DOMListeners';
 
 const printSections = (() => {
   const clearWrapper = () => {
@@ -72,6 +72,7 @@ const printInterfaceModule = (() => {
   const printAddToDoInterface = () => {
     clearBottomInterface();
     createToDoInterface().appendAll();
+    inputListenersModule().getToDoInputValues();
   };
 
   const printAddProjectInterface = () => {

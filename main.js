@@ -6,6 +6,7 @@ const ToDoCreationlogicModule = toDoCreationlogicModule();
 sideBarListeners().addCircleButton();
 sideBarListeners().projectButton(ToDoCreationlogicModule.projects);
 createDefault(ToDoCreationlogicModule);
+console.log(ToDoCreationlogicModule.toDos);
 
 // function test() {
 //   const button = selectSidebar().addSideButton;

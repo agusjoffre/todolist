@@ -1,4 +1,5 @@
 import { printInterfaceModule, printSections } from './print';
+import toDoCreationlogicModule from './logic';
 
 const sideBarListeners = (() => {
   const addCircleButton = () => {
@@ -41,4 +42,22 @@ const interfaceListeners = (() => {
   return { toDoInterfaceButtonListener, projectInterfaceButtonListener, noteInteraceButtonListener };
 });
 
-export { sideBarListeners, interfaceListeners };
+const inputListenersModule = (() => {
+  const getToDoInputValues = () => {
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const titleInputDOM = document.querySelector('.todo-title-input');
+      const titleValue = titleInputDOM.value;
+      const detailsInputDOM = document.querySelector('.todo-description-input');
+      const detailsValue = detailsInputDOM.value;
+      const dueDateInputDOM = document.querySelector('.todo-duedate-input');
+      const dueDateValue = dueDateInputDOM.value;
+      toDoCreationlogicModule().createToDo(titleValue, detailsValue, dueDateValue);
+      console.log(toDoCreationlogicModule().toDos);
+    });
+  };
+  return { getToDoInputValues };
+});
+
+export { sideBarListeners, interfaceListeners, inputListenersModule };

@@ -4,8 +4,8 @@ const projectFactory = (name, details) => ({
   name, details, toDo: [], note: [],
 });
 
-const toDoFactory = (name, description, dueDate, notes, check, projectIndex) => ({
-  name, description, dueDate, notes, check, projectIndex,
+const toDoFactory = (name, description, dueDate, check, projectIndex) => ({
+  name, description, dueDate, check, projectIndex,
 });
 
 const noteFactory = (name, details) => ({ name, details });
