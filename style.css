@@ -438,3 +438,8 @@ header strong {
   width: 55px;
   height: 23px;
 }
+
+
+.check-btn-true {
+  background-color: #36baed;
+}

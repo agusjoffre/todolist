@@ -1,4 +1,5 @@
 import { selectAside } from './DOMMain';
+import ToDoCreationlogicModule from './main';
 
 const { wrapper } = selectAside();
 
@@ -145,10 +146,15 @@ const createToDoSection = () => {
     return left;
   };
 
-  const checkButton = () => {
+  const checkButton = (check) => {
     const button = document.createElement('button');
-    button.classList.add('.check-card-btn');
-    button.innerText = 'CHEKKK';
+    button.classList.add('check-card-btn');
+    if (check === true) {
+      button.classList.add('check-btn-true');
+    }
+    if (check === false) {
+      button.classList.remove('check-btn-true');
+    }
     return button;
   };
 
@@ -193,10 +199,10 @@ const createToDoSection = () => {
     return button;
   };
 
-  const createAll = () => ({
+  const createAll = (check) => ({
     cardWrapper: cardWrapper(),
     leftCard: leftCard(),
-    checkButton: checkButton(),
+    checkButton: checkButton(check),
     toDoName: toDoName(),
     rightCard: rightCard(),
     cardDetailsButton: cardDetailsButton(),
@@ -205,13 +211,13 @@ const createToDoSection = () => {
     cardDeleteButton: cardDeleteButton(),
   });
 
-  const appendAll = (name, dueDate) => {
-    const elements = createAll();
+  const appendAll = (name, dueDate, check) => {
+    const elements = createAll(check);
     // const { wrapper } = selectAside();
     // const wrapp = document.querySelector('.info-input-wrapper');
     wrapper().appendChild(elements.cardWrapper);
     elements.cardWrapper.appendChild(elements.leftCard);
-    elements.leftCard.appendChild(checkButton());
+    elements.leftCard.appendChild(checkButton(check));
     elements.leftCard.appendChild(toDoName(name));
     elements.cardWrapper.appendChild(elements.rightCard);
     elements.rightCard.appendChild(elements.cardDetailsButton);
@@ -220,7 +226,7 @@ const createToDoSection = () => {
     elements.rightCard.appendChild(cardDeleteButton());
   };
 
-  return { createAll, appendAll };
+  return { createAll, appendAll, checkButton };
 };
 const createTodaySection = (() => {});
 

@@ -93,16 +93,19 @@ const interfaceListeners = (() => {
       });
     });
   };
-
-  const checkToDoListener = (toDos) => {
+  const toDoCheckListener = (toDos) => {
     const checkButton = document.querySelectorAll('.check-card-btn');
-    checkButton.forEach((button) => {
-      console.log(button);
+    checkButton.forEach((button, i) => {
+      button.addEventListener('click', () => {
+        const index = i;
+        ToDoCreationlogicModule.switchCheckStatus(index);
+        printSections().printToDos(toDos);
+      });
     });
   };
 
   return {
-    toDoInterfaceButtonListener, projectInterfaceButtonListener, noteInteraceButtonListener, deleteToDoListener, deleteProjectListener, deleteNotesListener, checkToDoListener,
+    toDoInterfaceButtonListener, projectInterfaceButtonListener, noteInteraceButtonListener, deleteToDoListener, deleteProjectListener, deleteNotesListener, toDoCheckListener,
   };
 });
 

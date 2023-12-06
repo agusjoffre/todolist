@@ -39,10 +39,10 @@ const printSections = (() => {
   const printToDos = (toDos) => {
     clearWrapper();
     toDos.forEach((todo) => {
-      createToDoSection().appendAll(todo.name, todo.dueDate);
+      createToDoSection().appendAll(todo.name, todo.dueDate, todo.check);
     });
-    interfaceListeners().deleteToDoListener(ToDoCreationlogicModule.toDos);
-    interfaceListeners().checkToDoListener(ToDoCreationlogicModule.toDos);
+    interfaceListeners().toDoCheckListener(toDos);
+    interfaceListeners().deleteToDoListener(toDos);
   };
 
   return {

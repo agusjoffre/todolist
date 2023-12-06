@@ -42,6 +42,12 @@ const toDoCreationlogicModule = (() => {
     notes.splice(i, 1);
   };
 
+  const switchCheckStatus = (i) => {
+    const todo = toDos[i];
+    todo.check = !todo.check;
+    console.log(todo.check);
+  };
+
   return {
     projects,
     toDos,
@@ -54,6 +60,7 @@ const toDoCreationlogicModule = (() => {
     deleteNote,
     storeToDoInProject: addToDoInProject,
     storeNoteInProject: addNoteInProject,
+    switchCheckStatus,
   };
 });
 
