@@ -165,31 +165,35 @@ const createToDoSection = () => {
     const button = document.createElement('button');
     button.classList.add('card-delete-btn');
     button.innerText = 'X';
+    return button;
   };
 
-  const createAll = (name, dueDate) => ({
+  const createAll = () => ({
     cardWrapper: cardWrapper(),
     leftCard: leftCard(),
     checkButton: checkButton(),
-    toDoName: toDoName(name),
+    toDoName: toDoName(),
     rightCard: rightCard(),
     cardDetailsButton: cardDetailsButton(),
-    cardDateButton: cardDateButton(dueDate),
+    cardDateButton: cardDateButton(),
     cardEditButton: cardEditButton(),
     cardDeleteButton: cardDeleteButton(),
   });
 
-  const appendAll = () => {
+  const appendAll = (name, dueDate) => {
+    console.log(dueDate);
     const elements = createAll();
+    const { wrapper } = selectAside();
+    // const wrapp = document.querySelector('.info-input-wrapper');
     wrapper().appendChild(elements.cardWrapper);
     elements.cardWrapper.appendChild(elements.leftCard);
     elements.leftCard.appendChild(elements.checkButton);
-    elements.leftCard.appendChild(elements.toDoName);
+    elements.leftCard.appendChild(toDoName(name));
     elements.cardWrapper.appendChild(elements.rightCard);
     elements.rightCard.appendChild(elements.cardDetailsButton);
-    elements.rightCard.appendChild(elements.cardDateButton);
+    elements.rightCard.appendChild(cardDateButton(dueDate));
     elements.rightCard.appendChild(elements.cardEditButton);
-    elements.rightCard.appendChild(elements.cardDeleteButton);
+    elements.rightCard.appendChild(cardDeleteButton());
   };
 
   return { createAll, appendAll };

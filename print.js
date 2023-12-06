@@ -36,7 +36,7 @@ const printSections = (() => {
   const printToDos = (toDos) => {
     clearWrapper();
     toDos.forEach((todo) => {
-      createToDoSection().createAll(todo.name, todo.duedate);
+      createToDoSection().appendAll(todo.name, todo.dueDate);
     });
   };
 
@@ -78,11 +78,13 @@ const printInterfaceModule = (() => {
   const printAddProjectInterface = () => {
     clearBottomInterface();
     createProjectInterface().appendAll();
+    inputListenersModule().getProjectInputValues();
   };
 
   const printAddNotesInterface = () => {
     clearBottomInterface();
     createNoteInterface().appendAll();
+    inputListenersModule().getNotesInputValues();
   };
 
   return {

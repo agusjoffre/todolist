@@ -15,7 +15,14 @@ const sideBarListeners = (() => {
       printSections().printProjects(projects);
     });
   };
-  return { addCircleButton, projectButton };
+
+  const homeButton = (toDos) => {
+    const homeBtn = document.querySelector('.home-btn');
+    homeBtn.addEventListener('click', () => {
+      printSections().printToDos(toDos);
+    });
+  };
+  return { addCircleButton, projectButton, homeButton };
 });
 
 const interfaceListeners = (() => {
@@ -53,12 +60,38 @@ const inputListenersModule = (() => {
       const detailsValue = detailsInputDOM.value;
       const dueDateInputDOM = document.querySelector('.todo-duedate-input');
       const dueDateValue = dueDateInputDOM.value;
-      console.log(ToDoCreationlogicModule.projects);
+      // despues cambiar tema projectindex = 0
       ToDoCreationlogicModule.createToDo(titleValue, detailsValue, dueDateValue, false, 0);
-      console.log(ToDoCreationlogicModule.toDos);
+      form.reset();
     });
   };
-  return { getToDoInputValues };
+
+  const getProjectInputValues = () => {
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const projectTitleDOM = document.querySelector('.project-title-input');
+      const projectTitleValue = projectTitleDOM.value;
+      ToDoCreationlogicModule.createProject(projectTitleValue, null);
+      form.reset();
+    });
+  };
+
+  const getNotesInputValues = () => {
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const notesTitleDOM = document.querySelector('.notes-title-input');
+      const notesTitleValue = notesTitleDOM.value;
+      const notesDetailsDOM = document.querySelector('.notes-details-input');
+      const notesDetailsValue = notesDetailsDOM.value;
+      ToDoCreationlogicModule.createNote(notesTitleValue, notesDetailsValue, 0);
+      console.log('Notes: ');
+      console.log(ToDoCreationlogicModule.notes);
+      form.reset();
+    });
+  };
+  return { getToDoInputValues, getProjectInputValues, getNotesInputValues };
 });
 
 export { sideBarListeners, interfaceListeners, inputListenersModule };
