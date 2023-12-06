@@ -9,4 +9,10 @@ sideBarListeners().homeButton(ToDoCreationlogicModule.toDos);
 sideBarListeners().notesButton(ToDoCreationlogicModule.notes);
 createDefault(ToDoCreationlogicModule);
 
-export default ToDoCreationlogicModule;
+const alertIfNoProjects = () => {
+  if (ToDoCreationlogicModule.projects.length === 0) {
+    alert('Please add a project!');
+  }
+};
+
+export { ToDoCreationlogicModule, alertIfNoProjects };

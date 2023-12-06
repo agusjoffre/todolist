@@ -1,5 +1,5 @@
 import { printInterfaceModule, printSections } from './print';
-import ToDoCreationlogicModule from './main';
+import { ToDoCreationlogicModule } from './main';
 
 /* -------------------------------Sidebar listeners--------------------------------------*/
 

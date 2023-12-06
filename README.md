@@ -6,13 +6,10 @@
 5. Elegir project index en DOM interfaz de creacion de to do. -->
 <!-- 6. Eliminar los proyectos. -->
 <!-- 7. Eliminar los ToDos. -->
-7. Hacer funcionar el Check
-8. Funcionalidad de week y today.
-9. Styling week y today.
-10. Styling la pagina de Project y Notes.
-11. Styling cartas de toDos.
-12. [OPCIONAL] Project Details.
-13. [OPCIONAL] Editar To dos y Proyectos.
-14. Pulir css.
-15. Local Storage.
+<!-- 7. Hacer funcionar el Check -->
+- Funcionalidad de week y today.
+- [OPCIONAL] Project Details.
+- [OPCIONAL] Editar To dos y Proyectos.
+- Pulir css.
+- Local Storage.
 ---------------------------------------------------------------

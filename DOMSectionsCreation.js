@@ -1,5 +1,5 @@
 import { selectAside } from './DOMMain';
-import ToDoCreationlogicModule from './main';
+import { ToDoCreationlogicModule } from './main';
 
 const { wrapper } = selectAside();
 
