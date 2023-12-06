@@ -70,8 +70,9 @@ const inputListenersModule = (() => {
       const detailsValue = detailsInputDOM.value;
       const dueDateInputDOM = document.querySelector('.todo-duedate-input');
       const dueDateValue = dueDateInputDOM.value;
-      // despues cambiar tema projectindex = 0
-      ToDoCreationlogicModule.createToDo(titleValue, detailsValue, dueDateValue, false, 0);
+      const projectChooseInput = document.querySelector('select');
+      const projectChooseValue = projectChooseInput.selectedIndex;
+      ToDoCreationlogicModule.createToDo(titleValue, detailsValue, dueDateValue, false, projectChooseValue);
       form.reset();
     });
   };
@@ -95,7 +96,9 @@ const inputListenersModule = (() => {
       const notesTitleValue = notesTitleDOM.value;
       const notesDetailsDOM = document.querySelector('.notes-details-input');
       const notesDetailsValue = notesDetailsDOM.value;
-      ToDoCreationlogicModule.createNote(notesTitleValue, notesDetailsValue, 0);
+      const projectChooseInput = document.querySelector('select');
+      const projectChooseValue = projectChooseInput.selectedIndex;
+      ToDoCreationlogicModule.createNote(notesTitleValue, notesDetailsValue, projectChooseValue);
       form.reset();
     });
   };
