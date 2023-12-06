@@ -4,8 +4,9 @@
 3. Que se printeen los To Dos, cuando click *HOME*. *Done*
 4. Agregar funcionalidad para elegir */PROJECT INDEX/* tanto en */TODOS/* como en */NOTES/*.
 5. Elegir project index en DOM interfaz de creacion de to do. -->
-6. Eliminar los proyectos.
-7. Eliminar los ToDos.
+<!-- 6. Eliminar los proyectos. -->
+<!-- 7. Eliminar los ToDos. -->
+7. Hacer funcionar el Check
 8. Funcionalidad de week y today.
 9. Styling week y today.
 10. Styling la pagina de Project y Notes.

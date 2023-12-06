@@ -25,6 +25,7 @@ const printSections = (() => {
       CreateProjectSection.createAll();
       CreateProjectSection.appendAll(project.name, project.toDo.length, project.details);
     });
+    interfaceListeners().deleteProjectListener(ToDoCreationlogicModule.projects);
   };
 
   const printNotes = (notes) => {
@@ -32,6 +33,7 @@ const printSections = (() => {
     notes.forEach((note) => {
       createNotesSection().appendAll(note.name, note.details);
     });
+    interfaceListeners().deleteNotesListener(ToDoCreationlogicModule.notes);
   };
 
   const printToDos = (toDos) => {
@@ -40,6 +42,7 @@ const printSections = (() => {
       createToDoSection().appendAll(todo.name, todo.dueDate);
     });
     interfaceListeners().deleteToDoListener(ToDoCreationlogicModule.toDos);
+    interfaceListeners().checkToDoListener(ToDoCreationlogicModule.toDos);
   };
 
   return {

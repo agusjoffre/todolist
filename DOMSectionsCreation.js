@@ -22,6 +22,13 @@ const createProjectSection = (() => {
     return title;
   };
 
+  const deleteButton = () => {
+    const button = document.createElement('button');
+    button.classList.add('project-card-delete');
+    button.innerText = 'X';
+    return button;
+  };
+
   const toDoCounter = (toDoQ) => {
     const text = document.createElement('p');
     text.classList.add('project-card-todoQ');
@@ -62,6 +69,7 @@ const createProjectSection = (() => {
     elements.projCard.appendChild(elements.topDiv);
     elements.topDiv.appendChild(projectTitle(name));
     elements.topDiv.appendChild(toDoCounter(todoq));
+    elements.topDiv.appendChild(deleteButton());
     elements.bottomDiv.appendChild(elements.detailsLabel);
     elements.bottomDiv.appendChild(detailsP(details));
   };
@@ -78,11 +86,24 @@ const createNotesSection = (() => {
     return card;
   };
 
+  const createTopDiv = () => {
+    const div = document.createElement('div');
+    div.classList.add('note-card-top-div');
+    return div;
+  };
+
   const noteName = (name) => {
     const title = document.createElement('h1');
     title.classList.add('note-card-title');
     title.innerText = name;
     return title;
+  };
+
+  const deleteButton = () => {
+    const button = document.createElement('button');
+    button.classList.add('note-card-delete-btn');
+    button.innerText = 'X';
+    return button;
   };
 
   const detailP = (details) => {
@@ -96,12 +117,15 @@ const createNotesSection = (() => {
     noteCard: noteCard(),
     noteName: noteName(),
     detailP: detailP(),
+    topDiv: createTopDiv(),
   });
 
   const appendAll = (name, details) => {
     const elements = createAll();
     wrapper().appendChild(elements.noteCard);
-    elements.noteCard.appendChild(noteName(name));
+    elements.noteCard.appendChild(elements.topDiv);
+    elements.topDiv.appendChild(noteName(name));
+    elements.topDiv.appendChild(deleteButton());
     elements.noteCard.appendChild(detailP(details));
   };
 
@@ -124,6 +148,7 @@ const createToDoSection = () => {
   const checkButton = () => {
     const button = document.createElement('button');
     button.classList.add('.check-card-btn');
+    button.innerText = 'CHEKKK';
     return button;
   };
 
@@ -182,11 +207,11 @@ const createToDoSection = () => {
 
   const appendAll = (name, dueDate) => {
     const elements = createAll();
-    const { wrapper } = selectAside();
+    // const { wrapper } = selectAside();
     // const wrapp = document.querySelector('.info-input-wrapper');
     wrapper().appendChild(elements.cardWrapper);
     elements.cardWrapper.appendChild(elements.leftCard);
-    elements.leftCard.appendChild(elements.checkButton);
+    elements.leftCard.appendChild(checkButton());
     elements.leftCard.appendChild(toDoName(name));
     elements.cardWrapper.appendChild(elements.rightCard);
     elements.rightCard.appendChild(elements.cardDetailsButton);

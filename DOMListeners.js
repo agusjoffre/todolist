@@ -72,8 +72,37 @@ const interfaceListeners = (() => {
     });
   };
 
+  const deleteProjectListener = (projects) => {
+    const deleteButton = document.querySelectorAll('.project-card-delete');
+    deleteButton.forEach((button, i) => {
+      button.addEventListener('click', () => {
+        const index = i;
+        ToDoCreationlogicModule.deleteProject(index);
+        printSections().printProjects(projects);
+      });
+    });
+  };
+
+  const deleteNotesListener = (notes) => {
+    const deleteButton = document.querySelectorAll('.note-card-delete-btn');
+    deleteButton.forEach((button, i) => {
+      button.addEventListener('click', () => {
+        const index = i;
+        ToDoCreationlogicModule.deleteNote(index);
+        printSections().printNotes(notes);
+      });
+    });
+  };
+
+  const checkToDoListener = (toDos) => {
+    const checkButton = document.querySelectorAll('.check-card-btn');
+    checkButton.forEach((button) => {
+      console.log(button);
+    });
+  };
+
   return {
-    toDoInterfaceButtonListener, projectInterfaceButtonListener, noteInteraceButtonListener, deleteToDoListener,
+    toDoInterfaceButtonListener, projectInterfaceButtonListener, noteInteraceButtonListener, deleteToDoListener, deleteProjectListener, deleteNotesListener, checkToDoListener,
   };
 });
 
