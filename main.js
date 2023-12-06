@@ -8,6 +8,7 @@ sideBarListeners().projectButton(ToDoCreationlogicModule.projects);
 sideBarListeners().homeButton(ToDoCreationlogicModule.toDos);
 sideBarListeners().notesButton(ToDoCreationlogicModule.notes);
 createDefault(ToDoCreationlogicModule);
+
 export default ToDoCreationlogicModule;
 
 // function test() {

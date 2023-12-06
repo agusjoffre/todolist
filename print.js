@@ -39,6 +39,7 @@ const printSections = (() => {
     toDos.forEach((todo) => {
       createToDoSection().appendAll(todo.name, todo.dueDate);
     });
+    interfaceListeners().deleteToDoListener(ToDoCreationlogicModule.toDos);
   };
 
   return {

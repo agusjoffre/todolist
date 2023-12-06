@@ -1,6 +1,8 @@
 import { printInterfaceModule, printSections } from './print';
 import ToDoCreationlogicModule from './main';
 
+/* -------------------------------Sidebar listeners--------------------------------------*/
+
 const sideBarListeners = (() => {
   const addCircleButton = () => {
     const addButton = document.querySelector('#add-side-btn');
@@ -35,6 +37,8 @@ const sideBarListeners = (() => {
   };
 });
 
+/* -------------------------------Interface listeners--------------------------------------*/
+
 const interfaceListeners = (() => {
   const toDoInterfaceButtonListener = (projects) => {
     const toDoButton = document.querySelector('.info-input-top-todo-btn');
@@ -56,8 +60,24 @@ const interfaceListeners = (() => {
       printInterfaceModule().printAddNotesInterface(projects);
     });
   };
-  return { toDoInterfaceButtonListener, projectInterfaceButtonListener, noteInteraceButtonListener };
+
+  const deleteToDoListener = (toDos) => {
+    const deleteButton = document.querySelectorAll('.card-delete-btn');
+    deleteButton.forEach((button, i) => {
+      button.addEventListener('click', () => {
+        const index = i;
+        ToDoCreationlogicModule.deleteToDo(index);
+        printSections().printToDos(toDos);
+      });
+    });
+  };
+
+  return {
+    toDoInterfaceButtonListener, projectInterfaceButtonListener, noteInteraceButtonListener, deleteToDoListener,
+  };
 });
+
+/* -------------------------------Input listeners--------------------------------------*/
 
 const inputListenersModule = (() => {
   const getToDoInputValues = () => {
