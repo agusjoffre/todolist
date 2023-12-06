@@ -1,6 +1,9 @@
 import { selectAside } from './DOMMain';
 
 const { wrapper } = selectAside();
+
+// ----------------------------Create main Interface----------------------------------------//
+
 const createInterface = (() => {
   const container = () => {
     const containerOfContainers = document.createElement('div');
@@ -87,6 +90,8 @@ const createInterface = (() => {
   };
 });
 
+// ----------------------------Create To Do Interface----------------------------------------//
+
 const createToDoInterface = (() => {
   const toDoForm = () => {
     const form = document.createElement('form');
@@ -136,6 +141,20 @@ const createToDoInterface = (() => {
     return input;
   };
 
+  const projectChooser = (projects) => {
+    const select = document.createElement('select');
+    select.classList.add('todo-project-select');
+    select.name = 'projectChooser';
+    projects.forEach((project) => {
+      const option = document.createElement('option');
+      option.classList.add('todo-project-select-option');
+      option.name = `${project}_projectOptions`;
+      option.innerText = project.name;
+      select.appendChild(option);
+    });
+    return select;
+  };
+
   const bottomRight = () => {
     const container = document.createElement('div');
     container.classList.add('todo-bottom-right');
@@ -150,7 +169,7 @@ const createToDoInterface = (() => {
     return button;
   };
 
-  const createAll = () => ({
+  const createAll = (projects) => ({
     form: toDoForm(),
     titleInput: titleInput(),
     descriptionInput: descriptionInput(),
@@ -158,13 +177,14 @@ const createToDoInterface = (() => {
     bottomLeft: bottomLeft(),
     dueDateLabel: dueDateLabel(),
     dueDateInput: dueDateInput(),
+    projectChooser: projectChooser(projects),
     bottomRight: bottomRight(),
     addBtn: addBtn(),
   });
 
-  const appendAll = () => {
+  const appendAll = (projects) => {
     const switchingContainer = document.querySelector('.switching-container');
-    const elements = createAll();
+    const elements = createAll(projects);
     switchingContainer.appendChild(elements.form);
     elements.form.appendChild(elements.titleInput);
     elements.form.appendChild(elements.descriptionInput);
@@ -172,12 +192,15 @@ const createToDoInterface = (() => {
     elements.bottomWrapper.appendChild(elements.bottomLeft);
     elements.bottomLeft.appendChild(elements.dueDateLabel);
     elements.bottomLeft.appendChild(elements.dueDateInput);
+    elements.bottomLeft.appendChild(projectChooser(projects));
     elements.bottomWrapper.appendChild(elements.bottomRight);
     elements.bottomRight.appendChild(elements.addBtn);
   };
 
   return { createAll, appendAll };
 });
+
+// ----------------------------Create Project Interface----------------------------------------//
 
 const createProjectInterface = (() => {
   const projectForm = () => {
@@ -216,6 +239,8 @@ const createProjectInterface = (() => {
   return { createAll, appendAll };
 });
 
+// ----------------------------Create notes interface----------------------------------------//
+
 const createNoteInterface = () => {
   const notesForm = () => {
     const form = document.createElement('form');
@@ -237,7 +262,19 @@ const createNoteInterface = () => {
     textarea.placeholder = 'Complete details...';
     return textarea;
   };
-
+  const projectChooser = (projects) => {
+    const select = document.createElement('select');
+    select.classList.add('todo-project-select');
+    select.name = 'projectChooser';
+    projects.forEach((project) => {
+      const option = document.createElement('option');
+      option.classList.add('todo-project-select-option');
+      option.name = `${project}_projectOptions`;
+      option.innerText = project.name;
+      select.appendChild(option);
+    });
+    return select;
+  };
   const addButton = () => {
     const button = document.createElement('button');
     button.classList.add('notes-add-btn');
@@ -245,19 +282,21 @@ const createNoteInterface = () => {
     button.innerText = 'Add';
     return button;
   };
-  const createAll = () => ({
+  const createAll = (projects) => ({
     form: notesForm(),
     titleInput: titleInput(),
     detailsInput: detailsInput(),
+    projectChooser: projectChooser(projects),
     addButton: addButton(),
   });
 
-  const appendAll = () => {
+  const appendAll = (projects) => {
     const switchingContainer = document.querySelector('.switching-container');
-    const elements = createAll();
+    const elements = createAll(projects);
     switchingContainer.appendChild(elements.form);
     elements.form.appendChild(elements.titleInput);
     elements.form.appendChild(elements.detailsInput);
+    elements.form.appendChild(projectChooser(projects));
     elements.form.appendChild(elements.addButton);
   };
 

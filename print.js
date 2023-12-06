@@ -6,6 +6,7 @@ import {
   createProjectSection, createNotesSection, createToDoSection,
 } from './DOMSectionsCreation';
 import { interfaceListeners, inputListenersModule } from './DOMListeners';
+import ToDoCreationlogicModule from './main';
 
 const printSections = (() => {
   const clearWrapper = () => {
@@ -71,7 +72,7 @@ const printInterfaceModule = (() => {
 
   const printAddToDoInterface = () => {
     clearBottomInterface();
-    createToDoInterface().appendAll();
+    createToDoInterface().appendAll(ToDoCreationlogicModule.projects);
     inputListenersModule().getToDoInputValues();
   };
 
@@ -83,7 +84,7 @@ const printInterfaceModule = (() => {
 
   const printAddNotesInterface = () => {
     clearBottomInterface();
-    createNoteInterface().appendAll();
+    createNoteInterface().appendAll(ToDoCreationlogicModule.projects);
     inputListenersModule().getNotesInputValues();
   };
 

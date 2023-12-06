@@ -36,10 +36,10 @@ const sideBarListeners = (() => {
 });
 
 const interfaceListeners = (() => {
-  const toDoInterfaceButtonListener = () => {
+  const toDoInterfaceButtonListener = (projects) => {
     const toDoButton = document.querySelector('.info-input-top-todo-btn');
     toDoButton.addEventListener('click', () => {
-      printInterfaceModule().printAddToDoInterface();
+      printInterfaceModule().printAddToDoInterface(projects);
     });
   };
 
@@ -50,10 +50,10 @@ const interfaceListeners = (() => {
     });
   };
 
-  const noteInteraceButtonListener = () => {
+  const noteInteraceButtonListener = (projects) => {
     const noteInterfaceButton = document.querySelector('.info-input-top-notes-btn');
     noteInterfaceButton.addEventListener('click', () => {
-      printInterfaceModule().printAddNotesInterface();
+      printInterfaceModule().printAddNotesInterface(projects);
     });
   };
   return { toDoInterfaceButtonListener, projectInterfaceButtonListener, noteInteraceButtonListener };
@@ -96,8 +96,6 @@ const inputListenersModule = (() => {
       const notesDetailsDOM = document.querySelector('.notes-details-input');
       const notesDetailsValue = notesDetailsDOM.value;
       ToDoCreationlogicModule.createNote(notesTitleValue, notesDetailsValue, 0);
-      console.log('Notes: ');
-      console.log(ToDoCreationlogicModule.notes);
       form.reset();
     });
   };

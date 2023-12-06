@@ -1,6 +1,6 @@
 import toDoCreationlogicModule from './logic';
 import createDefault from './default';
-import { sideBarListeners } from './DOMListeners';
+import { interfaceListeners, sideBarListeners } from './DOMListeners';
 
 const ToDoCreationlogicModule = toDoCreationlogicModule();
 sideBarListeners().addCircleButton();
