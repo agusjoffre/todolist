@@ -29,7 +29,7 @@ const printSections = (() => {
   const printNotes = (notes) => {
     clearWrapper();
     notes.forEach((note) => {
-      createNotesSection().createAll(note.name, note.details);
+      createNotesSection().appendAll(note.name, note.details);
     });
   };
 

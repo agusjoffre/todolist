@@ -22,7 +22,17 @@ const sideBarListeners = (() => {
       printSections().printToDos(toDos);
     });
   };
-  return { addCircleButton, projectButton, homeButton };
+
+  const notesButton = (notes) => {
+    const notesBtn = document.querySelector('.notes-btn');
+    notesBtn.addEventListener('click', () => {
+      printSections().printNotes(notes);
+    });
+  };
+
+  return {
+    addCircleButton, projectButton, homeButton, notesButton,
+  };
 });
 
 const interfaceListeners = (() => {

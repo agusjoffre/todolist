@@ -92,17 +92,17 @@ const createNotesSection = (() => {
     return detail;
   };
 
-  const createAll = (name, details) => ({
+  const createAll = () => ({
     noteCard: noteCard(),
-    noteName: noteName(name),
-    detailP: detailP(details),
+    noteName: noteName(),
+    detailP: detailP(),
   });
 
-  const appendAll = () => {
+  const appendAll = (name, details) => {
     const elements = createAll();
     wrapper().appendChild(elements.noteCard);
-    elements.noteCard.appendChild(elements.noteName);
-    elements.noteCard.appendChild(elements.detailP);
+    elements.noteCard.appendChild(noteName(name));
+    elements.noteCard.appendChild(detailP(details));
   };
 
   return { createAll, appendAll };
@@ -181,7 +181,6 @@ const createToDoSection = () => {
   });
 
   const appendAll = (name, dueDate) => {
-    console.log(dueDate);
     const elements = createAll();
     const { wrapper } = selectAside();
     // const wrapp = document.querySelector('.info-input-wrapper');
