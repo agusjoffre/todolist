@@ -26,6 +26,7 @@ const printSections = (() => {
       CreateProjectSection.appendAll(project.name, project.toDo.length, project.details);
     });
     interfaceListeners().deleteProjectListener(ToDoCreationlogicModule.projects);
+    inputListenersModule().getEditProjectInputValues();
   };
 
   const printNotes = (notes) => {
@@ -34,6 +35,7 @@ const printSections = (() => {
       createNotesSection().appendAll(note.name, note.details);
     });
     interfaceListeners().deleteNotesListener(ToDoCreationlogicModule.notes);
+    // inputListenersModule().getEditNotesInputValues();
   };
 
   const printToDos = (toDos) => {
@@ -43,6 +45,7 @@ const printSections = (() => {
     });
     interfaceListeners().toDoCheckListener(toDos);
     interfaceListeners().deleteToDoListener(toDos);
+    inputListenersModule().getEditToDoInputValues();
   };
 
   return {

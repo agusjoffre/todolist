@@ -154,7 +154,39 @@ const inputListenersModule = (() => {
       form.reset();
     });
   };
-  return { getToDoInputValues, getProjectInputValues, getNotesInputValues };
+
+  const getEditToDoInputValues = () => {
+    const forms = document.querySelectorAll('.todo-section-form');
+    forms.forEach((form, i) => {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nameValue = e.target.querySelector('.todo-name').value;
+        const dateValue = e.target.querySelector('.card-date-btn').value;
+        ToDoCreationlogicModule.editToDo(i, nameValue, dateValue);
+      });
+    });
+  };
+
+  const getEditProjectInputValues = () => {
+    const forms = document.querySelectorAll('.project-section-form');
+    forms.forEach((form, i) => {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nameValue = e.target.querySelector('.project-card-title').value;
+        console.log(nameValue);
+        // const detailsValue = e.target.querySelector('.').value;
+        ToDoCreationlogicModule.editProject(i, nameValue, null);
+      });
+    });
+  };
+
+  // const getEditNotesInputValues = () => {
+  //   const forms = document.querySelectorAll('.notes-section-form');
+  // };
+
+  return {
+    getToDoInputValues, getProjectInputValues, getNotesInputValues, getEditToDoInputValues, getEditProjectInputValues,
+  };
 });
 
 export { sideBarListeners, interfaceListeners, inputListenersModule };

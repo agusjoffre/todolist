@@ -16,10 +16,16 @@ const createProjectSection = (() => {
     return top;
   };
 
+  const createForm = () => {
+    const form = document.createElement('form');
+    form.classList.add('project-section-form');
+    return form;
+  };
+
   const projectTitle = (projectName) => {
-    const title = document.createElement('h1');
+    const title = document.createElement('input');
     title.classList.add('project-card-title');
-    title.innerText = projectName;
+    title.value = projectName;
     return title;
   };
 
@@ -51,10 +57,18 @@ const createProjectSection = (() => {
   };
 
   const detailsP = (details) => {
-    const detail = document.createElement('p');
+    const detail = document.createElement('input');
     detail.classList.add('project-card-details');
-    detail.innerText = details;
+    detail.innerHTML = details;
     return detail;
+  };
+
+  const createEditButton = () => {
+    const button = document.createElement('button');
+    button.type = 'submit';
+    button.classList.add('project-section-edit-btn');
+    button.innerHTML = 'Edit';
+    return button;
   };
 
   const createAll = () => ({
@@ -62,17 +76,21 @@ const createProjectSection = (() => {
     topDiv: topDiv(),
     bottomDiv: bottomDiv(),
     detailsLabel: detailsLabel(),
+    createForm: createForm(),
+    createEditButton: createEditButton(),
   });
 
   const appendAll = (name, todoq, details) => {
     const elements = createAll();
     wrapper().appendChild(elements.projCard);
-    elements.projCard.appendChild(elements.topDiv);
+    elements.projCard.appendChild(elements.createForm);
+    elements.createForm.appendChild(elements.topDiv);
     elements.topDiv.appendChild(projectTitle(name));
     elements.topDiv.appendChild(toDoCounter(todoq));
     elements.topDiv.appendChild(deleteButton());
     elements.bottomDiv.appendChild(elements.detailsLabel);
     elements.bottomDiv.appendChild(detailsP(details));
+    elements.bottomDiv.appendChild(createEditButton());
   };
 
   return {
@@ -140,9 +158,15 @@ const createToDoSection = () => {
     return card;
   };
 
+  const createForm = () => {
+    const form = document.createElement('form');
+    form.classList.add('todo-section-form');
+    return form;
+  };
+
   const leftCard = () => {
     const left = document.createElement('div');
-    left.classList.add('.left-card');
+    left.classList.add('left-card');
     return left;
   };
 
@@ -159,9 +183,9 @@ const createToDoSection = () => {
   };
 
   const toDoName = (name) => {
-    const title = document.createElement('p');
-    title.classList.add('#todo-name');
-    title.innerText = name;
+    const title = document.createElement('input');
+    title.classList.add('todo-name');
+    title.value = name;
     return title;
   };
 
@@ -179,14 +203,16 @@ const createToDoSection = () => {
   };
 
   const cardDateButton = (dueDate) => {
-    const button = document.createElement('button');
+    const button = document.createElement('input');
     button.classList.add('card-date-btn');
-    button.innerText = dueDate;
+    button.type = 'date';
+    button.innerHTML = dueDate;
     return button;
   };
 
   const cardEditButton = () => {
     const button = document.createElement('button');
+    button.type = 'submit';
     button.classList.add('card-edit-btn');
     button.innerText = 'Edit';
     return button;
@@ -209,6 +235,7 @@ const createToDoSection = () => {
     cardDateButton: cardDateButton(),
     cardEditButton: cardEditButton(),
     cardDeleteButton: cardDeleteButton(),
+    createForm: createForm(),
   });
 
   const appendAll = (name, dueDate, check) => {
@@ -216,10 +243,11 @@ const createToDoSection = () => {
     // const { wrapper } = selectAside();
     // const wrapp = document.querySelector('.info-input-wrapper');
     wrapper().appendChild(elements.cardWrapper);
-    elements.cardWrapper.appendChild(elements.leftCard);
+    elements.cardWrapper.appendChild(elements.createForm);
+    elements.createForm.appendChild(elements.leftCard);
     elements.leftCard.appendChild(checkButton(check));
     elements.leftCard.appendChild(toDoName(name));
-    elements.cardWrapper.appendChild(elements.rightCard);
+    elements.createForm.appendChild(elements.rightCard);
     elements.rightCard.appendChild(elements.cardDetailsButton);
     elements.rightCard.appendChild(cardDateButton(dueDate));
     elements.rightCard.appendChild(elements.cardEditButton);

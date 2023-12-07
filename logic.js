@@ -45,7 +45,18 @@ const toDoCreationlogicModule = (() => {
   const switchCheckStatus = (i) => {
     const todo = toDos[i];
     todo.check = !todo.check;
-    console.log(todo.check);
+  };
+
+  const editToDo = (i, name, date) => {
+    const todo = toDos[i];
+    todo.name = name;
+    todo.dueDate = date;
+  };
+
+  const editProject = (i, name, details) => {
+    const project = projects[i];
+    project.name = name;
+    project.details = details;
   };
 
   return {
@@ -61,6 +72,8 @@ const toDoCreationlogicModule = (() => {
     storeToDoInProject: addToDoInProject,
     storeNoteInProject: addNoteInProject,
     switchCheckStatus,
+    editToDo,
+    editProject,
   };
 });
 

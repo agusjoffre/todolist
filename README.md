@@ -7,9 +7,9 @@
 <!-- 6. Eliminar los proyectos. -->
 <!-- 7. Eliminar los ToDos. -->
 <!-- 7. Hacer funcionar el Check -->
+- Editar Proyectos.
 - Funcionalidad de week y today.
 - [OPCIONAL] Project Details.
-- [OPCIONAL] Editar To dos y Proyectos.
 - Pulir css.
 - Local Storage.
 ---------------------------------------------------------------
